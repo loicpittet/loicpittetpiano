@@ -294,6 +294,12 @@ textarea.finput{resize:none;height:120px}
 #ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
 #ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
 #ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+@media(max-width:900px){
+  .hero-l { padding: 60px 20px 40px; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
+}
 </style>
 </style>
 
@@ -336,7 +342,7 @@ textarea.finput{resize:none;height:120px}
     <div class="ey" style="animation:slideRight .8s ease .1s both">Genève, Suisse</div>
     <h1 style="animation:fadeUp .8s ease .25s both">La musique,<br/><em>à votre rythme.</em></h1>
     <p class="sub" style="animation:fadeUp .8s ease .4s both">Pianiste pour vos événements privés et professeur de piano — un accompagnement passionné, entièrement sur mesure.</p>
-    <div style="display:flex;gap:12px;flex-wrap:nowrap;animation:fadeUp .8s ease .55s both">
+    <div class="hero-actions" style="display:flex;gap:12px;flex-wrap:nowrap;animation:fadeUp .8s ease .55s both">
       <a href="contact.html" class="btn btn-dark" style="font-size:0.78rem;padding:11px 20px">Prendre contact</a>
       <a href="#services" class="btn btn-out" style="font-size:0.78rem;padding:11px 20px">Mes services</a>
     </div>
