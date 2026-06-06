@@ -196,36 +196,99 @@ textarea.finput{resize:none;height:120px}
 10%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translateY(-120%) rotate(10deg)}}
 
 
-/* MOBILE MENU */
-.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:10px;background:none;border:none;border-radius:8px;z-index:1001}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px;transition:all .3s}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mobile-menu{position:fixed;top:68px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:999;flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;visibility:hidden;}
-@media(min-width:901px){.mobile-menu{display:none!important;}}
-@media(max-width:900px){.mobile-menu{display:flex;visibility:hidden;}}
-.mobile-menu.open{max-height:400px;padding:16px 24px;visibility:visible;}
-.mobile-menu a{color:var(--text);text-decoration:none;font-size:1rem;font-weight:400;padding:16px 0;border-bottom:1px solid var(--border);transition:color .2s;display:flex;align-items:center;justify-content:space-between}
+
+
+
+
+
+
+
+@media(min-width:901px){}
+@media(max-width:900px){}
+
+
 .mobile-menu a:last-child{border-bottom:none}
 .mobile-menu a:hover{color:var(--accent)}
 .mobile-menu a.active{color:var(--accent)}
-.mobile-menu .mob-contact{background:var(--text);color:var(--white)!important;padding:14px 20px!important;border-radius:8px;text-align:center;justify-content:center;margin-top:12px;border:none!important}
-.mobile-menu{display:none!important}}
+
+}
 .nav-links{display:none!important}.nav-cta{display:none!important}}
 
 /* HAMBURGER - desktop hidden, mobile visible */
-#hamburger { display: none; }
+
 @media(max-width:900px) {
-  #hamburger { display: flex !important; }
+  
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
 }
 
 /* Hamburger open animation */
-#hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-#hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
-#hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+
+
+
+/* ═══ HAMBURGER MENU ═══ */
+#ham-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  z-index: 1000;
+}
+#ham-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1a1a1a;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+#ham-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid #e4e0d8;
+  z-index: 998;
+  padding: 16px 24px;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+#ham-menu a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 14px 0;
+  border-bottom: 1px solid #e4e0d8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+}
+#ham-menu a:last-child { border-bottom: none; }
+#ham-menu a:hover { color: #8b6f4e; }
+#ham-menu .ham-cta {
+  background: #1a1a1a;
+  color: white !important;
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 8px;
+  border: none !important;
+}
+@media (max-width: 900px) {
+  #ham-btn { display: flex !important; }
+  #ham-menu { display: flex; max-height: 0; overflow: hidden; padding: 0 24px; transition: max-height 0.4s ease, padding 0.3s ease; }
+  #ham-menu.open { max-height: 500px; padding: 16px 24px; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+}
 </style>
 </style>
 
@@ -244,13 +307,20 @@ textarea.finput{resize:none;height:120px}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html" class="active">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
-  <button id="hamburger" onclick="toggleMenu()" style="flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:8px;z-index:1001">
-    <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s;transform-origin:center"></span>
-    <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s"></span>
-    <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s;transform-origin:center"></span>
+  
+  <button id="ham-btn" onclick="
+    var m=document.getElementById('ham-menu');
+    var b=document.getElementById('ham-btn');
+    m.classList.toggle('open');
+    b.classList.toggle('open');
+  ">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
 </nav>
-<div class="mobile-menu" id="mobile-menu"><a href="index.html" class="active">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html">Événements <span>→</span></a><a href="a-propos.html">À propos <span>→</span></a><a href="contact.html" class="mob-contact">Contact</a></div>
+<div id="ham-menu"><a href="index.html" style="color:#8b6f4e">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html">Événements <span>→</span></a><a href="a-propos.html">À propos <span>→</span></a><a href="contact.html" class="ham-cta">Contact</a></div>
+
 
 <!-- HERO -->
 <div class="hero">
@@ -417,19 +487,6 @@ reveals.forEach(el => revealObserver.observe(el));
 </script>
 
 
-<script>
-function toggleMenu() {
-  var btn = document.getElementById('hamburger');
-  var menu = document.getElementById('mobile-menu');
-  btn.classList.toggle('open');
-  menu.classList.toggle('open');
-}
-document.querySelectorAll('.mobile-menu a').forEach(function(a){
-  a.addEventListener('click', function(){
-    document.getElementById('hamburger').classList.remove('open');
-    document.getElementById('mobile-menu').classList.remove('open');
-  });
-});
-</script>
+
 </body>
 </html>
