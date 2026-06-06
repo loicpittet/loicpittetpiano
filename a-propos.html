@@ -137,7 +137,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .mobile-menu a.active{color:var(--accent)}
 
 }
-.nav-links{display:none!important}.nav-cta{display:none!important}}
+.nav-links{display:none!important}}
 
 /* HAMBURGER - desktop hidden, mobile visible */
 
@@ -214,6 +214,11 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
 }
+
+/* Hamburger X animation */
+#ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+#ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
+#ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html" class="active">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
