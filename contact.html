@@ -257,15 +257,18 @@ textarea.finput{resize:none;height:130px}
     <div class="cform reveal from-right" data-delay="200">
       <h2 style="font-size:1.6rem;margin-bottom:8px">Envoyer un message</h2>
       <p style="font-size:0.85rem;color:var(--muted);margin-bottom:32px">Je lis tous les messages et réponds personnellement.</p>
-      <div class="frow">
-        <div class="fg"><label class="flbl">Prénom</label><input type="text" class="finput" placeholder="Sophie"/></div>
-        <div class="fg"><label class="flbl">Nom</label><input type="text" class="finput" placeholder="Martin"/></div>
-      </div>
-      <div class="fg"><label class="flbl">Email</label><input type="email" class="finput" placeholder="sophie@email.com"/></div>
-      <div class="fg"><label class="flbl">Téléphone (optionnel)</label><input type="tel" class="finput" placeholder="+41 79 000 00 00"/></div>
-      <div class="fg"><label class="flbl">Je suis intéressé(e) par</label><select class="finput" style="color:var(--muted);cursor:pointer"><option value="" disabled selected>Choisir…</option><option>Cours de piano</option><option>Prestation événement</option><option>Autre</option></select></div>
-      <div class="fg"><label class="flbl">Message</label><textarea class="finput" placeholder="Décrivez votre projet, vos disponibilités…"></textarea></div>
-      <button class="btn btn-dark" style="width:100%;justify-content:center">Envoyer le message →</button>
+      <form id="contact-form" onsubmit="sendMessage(event)">
+        <div class="frow">
+          <div class="fg"><label class="flbl">Prénom</label><input id="f-prenom" type="text" class="finput" placeholder="Sophie" required/></div>
+          <div class="fg"><label class="flbl">Nom</label><input id="f-nom" type="text" class="finput" placeholder="Martin" required/></div>
+        </div>
+        <div class="fg"><label class="flbl">Email</label><input id="f-email" type="email" class="finput" placeholder="sophie@email.com" required/></div>
+        <div class="fg"><label class="flbl">Téléphone (optionnel)</label><input id="f-tel" type="tel" class="finput" placeholder="+41 79 000 00 00"/></div>
+        <div class="fg"><label class="flbl">Je suis intéressé(e) par</label><select id="f-sujet" class="finput" style="color:var(--muted);cursor:pointer" required><option value="" disabled selected>Choisir…</option><option>Cours de piano</option><option>Prestation événement</option><option>Autre</option></select></div>
+        <div class="fg"><label class="flbl">Message</label><textarea id="f-message" class="finput" placeholder="Décrivez votre projet, vos disponibilités…" required></textarea></div>
+        <button id="submit-btn" type="submit" class="btn btn-dark" style="width:100%;justify-content:center">Envoyer le message →</button>
+        <div id="form-msg"></div>
+      </form>
     </div>
   </div>
 </div>
@@ -320,5 +323,43 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const supabase = window.supabase.createClient('https://bivqgeyogceibenwpwby.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpdnFnZXlvZ2NlaWJlbndwd2J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NzMxNjEsImV4cCI6MjA5NjM0OTE2MX0.JadxUooczpw4Cb4--Eu1dtX16u8F5E6xc1jDls25jLA');
+
+async function sendMessage(e) {
+  e.preventDefault();
+  
+  var btn = document.getElementById('submit-btn');
+  var msg = document.getElementById('form-msg');
+  
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
+
+  var prenom = document.getElementById('f-prenom').value;
+  var nom = document.getElementById('f-nom').value;
+  var email = document.getElementById('f-email').value;
+  var tel = document.getElementById('f-tel').value;
+  var sujet = document.getElementById('f-sujet').value;
+  var message = document.getElementById('f-message').value;
+
+  var { error } = await supabase
+    .from('messages')
+    .insert([{ prenom, nom, email, telephone: tel, sujet, message, lu: false }]);
+
+  if (error) {
+    msg.innerHTML = '<div style="color:#e53e3e;padding:12px;background:#fff5f5;border-radius:8px;margin-top:14px">❌ Erreur lors de l'envoi. Veuillez réessayer.</div>';
+    btn.textContent = 'Envoyer le message →';
+    btn.disabled = false;
+  } else {
+    msg.innerHTML = '<div style="color:#276749;padding:12px;background:#f0fff4;border-radius:8px;margin-top:14px">✅ Message envoyé ! Je vous réponds sous 24h.</div>';
+    document.getElementById('contact-form').reset();
+    btn.textContent = 'Envoyer le message →';
+    btn.disabled = false;
+  }
+}
+</script>
 
 </body></html>
