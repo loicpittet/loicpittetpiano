@@ -87,6 +87,12 @@
     .flinks a:hover{color:var(--accent-l)}
     .fcopy{font-size:0.75rem;color:rgba(255,255,255,.3)}
 
+
+    /* SCROLL ANIMATIONS */
+    .card{opacity:0;transform:translateX(60px);transition:opacity 0.6s ease,transform 0.6s ease}
+    .card.from-left{transform:translateX(-60px)}
+    .card.visible{opacity:1;transform:translateX(0)}
+
     @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
     .f1{animation:fadeUp .7s ease .1s both}
     .f2{animation:fadeUp .7s ease .25s both}
@@ -171,17 +177,6 @@
   </div>
 </div>
 
-<!-- TARIFS -->
-<div class="sec">
-  <div class="ey">Tarifs</div>
-  <h2>Formules <em>flexibles</em></h2>
-  <div class="grid2" style="grid-template-columns:repeat(3,1fr);margin-top:40px">
-    <div class="tarif"><div class="tarif-n"></div><div class="tarif-lbl"></div><div class="tarif-desc">Chez vous ou en studio. Sans frais dans le canton de Genève.</div></div>
-    <div class="tarif feat"><div class="tarif-n"></div><div class="tarif-lbl"></div><div class="tarif-desc">Cours par webcam, aussi efficaces qu'en présentiel.</div></div>
-    <div class="tarif"><div class="tarif-n">✨</div><div class="tarif-lbl">Premier cours offert</div><div class="tarif-desc">Premier cours entièrement offert pour faire connaissance.</div></div>
-  </div>
-</div>
-
 <!-- CTA -->
 <div class="cta-dark">
   <h2>Prêt à commencer <em style="font-style:italic;color:#c4a882">l'aventure</em> ?</h2>
@@ -200,6 +195,30 @@
   </ul>
   <div class="fcopy">© 2026 — Tous droits réservés</div>
 </footer>
+
+
+<script>
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, i) => {
+    // Alternate left/right
+    if (i % 2 === 0) {
+      card.classList.add('from-left');
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
