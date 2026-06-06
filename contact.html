@@ -325,41 +325,37 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
-const supabase = window.supabase.createClient('https://bivqgeyogceibenwpwby.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpdnFnZXlvZ2NlaWJlbndwd2J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NzMxNjEsImV4cCI6MjA5NjM0OTE2MX0.JadxUooczpw4Cb4--Eu1dtX16u8F5E6xc1jDls25jLA');
+var sb = supabase.createClient('https://bivqgeyogceibenwpwby.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpdnFnZXlvZ2NlaWJlbndwd2J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NzMxNjEsImV4cCI6MjA5NjM0OTE2MX0.JadxUooczpw4Cb4--Eu1dtX16u8F5E6xc1jDls25jLA');
 
 async function sendMessage(e) {
   e.preventDefault();
-  
   var btn = document.getElementById('submit-btn');
   var msg = document.getElementById('form-msg');
-  
   btn.textContent = 'Envoi en cours...';
   btn.disabled = true;
-
-  var prenom = document.getElementById('f-prenom').value;
-  var nom = document.getElementById('f-nom').value;
-  var email = document.getElementById('f-email').value;
-  var tel = document.getElementById('f-tel').value;
-  var sujet = document.getElementById('f-sujet').value;
-  var message = document.getElementById('f-message').value;
-
-  var { error } = await supabase
-    .from('messages')
-    .insert([{ prenom, nom, email, telephone: tel, sujet, message, lu: false }]);
-
-  if (error) {
-    msg.innerHTML = '<div style="color:#e53e3e;padding:12px;background:#fff5f5;border-radius:8px;margin-top:14px">❌ Erreur lors de l'envoi. Veuillez réessayer.</div>';
-    btn.textContent = 'Envoyer le message →';
-    btn.disabled = false;
+  var data = {
+    prenom: document.getElementById('f-prenom').value,
+    nom: document.getElementById('f-nom').value,
+    email: document.getElementById('f-email').value,
+    telephone: document.getElementById('f-tel').value,
+    sujet: document.getElementById('f-sujet').value,
+    message: document.getElementById('f-message').value,
+    lu: false
+  };
+  var result = await sb.from('messages').insert([data]);
+  if (result.error) {
+    msg.innerHTML = '<div style="color:#e53e3e;padding:12px;background:#fff5f5;border-radius:8px;margin-top:14px">Erreur lors de l envoi. Veuillez reessayer.</div>';
   } else {
-    msg.innerHTML = '<div style="color:#276749;padding:12px;background:#f0fff4;border-radius:8px;margin-top:14px">✅ Message envoyé ! Je vous réponds sous 24h.</div>';
+    msg.innerHTML = '<div style="color:#276749;padding:12px;background:#f0fff4;border-radius:8px;margin-top:14px">Message envoye ! Je vous reponds sous 24h.</div>';
     document.getElementById('contact-form').reset();
-    btn.textContent = 'Envoyer le message →';
-    btn.disabled = false;
   }
+  btn.textContent = 'Envoyer le message';
+  btn.disabled = false;
 }
 </script>
-
 </body></html>
