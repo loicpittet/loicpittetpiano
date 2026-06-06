@@ -21,7 +21,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform .25s}
 .nav-links a:hover,.nav-links a.active{color:var(--accent)}
 .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
-.nav-cta{background:var(--text);color:var(--white)!important;padding:9px 20px;border-radius:6px;transition:background .25s!important}
+.nav-cta{background:var(--text);color:var(--white)!important;padding:9px 20px;border-radius:6px;transition:background .25s!important;display:inline-flex;align-items:center;justify-content:center;text-align:center;line-height:1}
 .nav-cta:hover{background:var(--accent)!important}
 .nav-cta::after{display:none!important}
 
@@ -155,12 +155,45 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 <section class="sec sec-bg">
   <div class="reveal"><div class="ey">Ce que disent mes élèves</div></div>
   <div class="reveal" data-delay="100"><h2>15 avis <em>★★★★★</em></h2></div>
-  <div class="grid2" style="margin-top:44px">
+  <div class="grid2" style="margin-top:44px" id="avis-container">
     <div class="avis-card reveal from-left" data-delay="100"><div class="stars">★★★★★</div><p class="avis-txt">« Loïc me transmet sa passion avec une approche très adaptée et personnalisée. J'ai 39 ans et je suis heureuse de constater les progrès faits en peu de temps. »</p><div class="avis-name">Jacqueline</div></div>
     <div class="avis-card reveal from-right" data-delay="150"><div class="stars">★★★★★</div><p class="avis-txt">« En 4 cours je joue déjà de petits morceaux sympas. Loïc est clair, ouvert, patient et sait mettre en confiance. On progresse vite, dans la bonne humeur ! »</p><div class="avis-name">Jessica</div></div>
     <div class="avis-card reveal from-left" data-delay="200"><div class="stars">★★★★★</div><p class="avis-txt">« Nos enfants de 7 et 9 ans progressent énormément. Loïc est patient et sait s'adapter à chaque élève. Ils peuvent choisir leurs morceaux, ce qui les motive ! »</p><div class="avis-name">Corinne</div></div>
     <div class="avis-card reveal from-right" data-delay="250"><div class="stars">★★★★★</div><p class="avis-txt">« Cela fait plus de 2 ans que je prends des cours avec Loïc ainsi que ma fille. Très pro, à l'écoute, toujours à l'heure et passionné. Je recommande vivement. »</p><div class="avis-name">Didier</div></div>
+
+    <!-- AVIS CACHÉS -->
+    <div class="avis-card avis-hidden" style="display:none"><div class="stars">★★★★★</div><p class="avis-txt">« Loïc est un professeur exceptionnel. Il a su trouver la bonne méthode pour mon fils de 8 ans qui avait du mal à se concentrer. Maintenant il adore le piano ! »</p><div class="avis-name">Marie-Claire</div></div>
+    <div class="avis-card avis-hidden" style="display:none"><div class="stars">★★★★★</div><p class="avis-txt">« J'avais toujours rêvé d'apprendre le piano à 50 ans. Loïc m'a prouvé que c'est possible. Sa patience et sa pédagogie sont remarquables. »</p><div class="avis-name">Bernard</div></div>
+    <div class="avis-card avis-hidden" style="display:none"><div class="stars">★★★★★</div><p class="avis-txt">« Après 6 mois de cours, je joue déjà des morceaux de jazz que j'adore. Loïc adapte vraiment chaque leçon à mes goûts musicaux. »</p><div class="avis-name">Thomas</div></div>
+    <div class="avis-card avis-hidden" style="display:none"><div class="stars">★★★★★</div><p class="avis-txt">« Mon fils de 10 ans attend ses cours avec impatience chaque semaine. Loïc a su lui transmettre l'amour de la musique de façon naturelle et joyeuse. »</p><div class="avis-name">Nathalie</div></div>
   </div>
+
+  <div style="text-align:center;margin-top:36px" class="reveal" data-delay="300">
+    <button id="btn-more-avis" onclick="showMoreAvis()" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:100px;border:1.5px solid var(--border);background:var(--white);font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .25s">
+      <span style="width:28px;height:28px;background:var(--accent-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:var(--accent)">+</span>
+      Voir plus d'avis
+    </button>
+  </div>
+
+  <script>
+  function showMoreAvis() {
+    var hidden = document.querySelectorAll('.avis-hidden');
+    var btn = document.getElementById('btn-more-avis');
+    hidden.forEach(function(el, i) {
+      setTimeout(function() {
+        el.style.display = 'block';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        setTimeout(function() {
+          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 50);
+      }, i * 100);
+    });
+    btn.style.display = 'none';
+  }
+  </script>
 </section>
 
 <section class="sec sec-dark" style="text-align:center">
