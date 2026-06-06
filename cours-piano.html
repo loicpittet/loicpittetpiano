@@ -132,12 +132,12 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .mobile-menu a:hover{color:var(--accent)}
 .mobile-menu a.active{color:var(--accent)}
 .mobile-menu .mob-contact{background:var(--text);color:var(--white)!important;padding:14px 20px!important;border-radius:8px;text-align:center;justify-content:center;margin-top:12px;border:none!important}
-@media(min-width:901px){.hamburger{display:none!important}.mobile-menu{display:none!important}}
-@media(max-width:900px){.hamburger{display:flex}.nav-links{display:none!important}.nav-cta{display:none}}
+@media(min-width:901px){#hamburger{display:none!important}.mobile-menu{display:none!important}}
+@media(max-width:900px){#hamburger{display:flex!important}.nav-links{display:none!important}.nav-cta{display:none!important}}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
-  <button id="hamburger" onclick="toggleMenu()" style="display:flex;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:8px;z-index:1001">
+  <button id="hamburger" style="display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:8px;z-index:1001" onclick="toggleMenu()">
     <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s;transform-origin:center"></span>
     <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s"></span>
     <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s;transform-origin:center"></span>
