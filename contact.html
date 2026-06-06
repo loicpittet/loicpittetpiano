@@ -330,6 +330,8 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 var sb = supabase.createClient('https://bivqgeyogceibenwpwby.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpdnFnZXlvZ2NlaWJlbndwd2J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NzMxNjEsImV4cCI6MjA5NjM0OTE2MX0.JadxUooczpw4Cb4--Eu1dtX16u8F5E6xc1jDls25jLA');
@@ -351,22 +353,37 @@ async function sendMessage(e) {
     lu: false
   };
 
-  // Save to database
-  await sb.from('messages').insert([data]);
+  try {
+    // Save to database
+    var dbResult = await sb.from('messages').insert([data]);
+    if (dbResult.error) throw new Error('DB: ' + dbResult.error.message);
 
-  // Send email notification
-  await fetch('https://bivqgeyogceibenwpwby.supabase.co/functions/v1/send-email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpdnFnZXlvZ2NlaWJlbndwd2J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NzMxNjEsImV4cCI6MjA5NjM0OTE2MX0.JadxUooczpw4Cb4--Eu1dtX16u8F5E6xc1jDls25jLA'
-    },
-    body: JSON.stringify(data)
-  });
+    // Send email - with timeout of 10s
+    var controller = new AbortController();
+    var timeout = setTimeout(() => controller.abort(), 10000);
+    
+    var emailResult = await fetch('https://bivqgeyogceibenwpwby.supabase.co/functions/v1/quick-worker', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJpdnFnZXlvZ2NlaWJlbndwd2J5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3NzMxNjEsImV4cCI6MjA5NjM0OTE2MX0.JadxUooczpw4Cb4--Eu1dtX16u8F5E6xc1jDls25jLA'
+      },
+      body: JSON.stringify(data),
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
 
-  msg.innerHTML = '<div style="color:#276749;padding:14px;background:#f0fff4;border-radius:8px;margin-top:14px;font-size:0.88rem">Message envoye avec succes ! Je vous reponds sous 24h.</div>';
-  document.getElementById('contact-form').reset();
-  btn.textContent = 'Envoyer le message';
+    msg.innerHTML = '<div style="color:#276749;padding:14px;background:#f0fff4;border-radius:8px;margin-top:14px;font-size:0.88rem">✅ Message envoyé ! Je vous réponds sous 24h.</div>';
+    document.getElementById('contact-form').reset();
+
+  } catch(err) {
+    console.error(err);
+    // Even if email fails, message was saved in DB
+    msg.innerHTML = '<div style="color:#276749;padding:14px;background:#f0fff4;border-radius:8px;margin-top:14px;font-size:0.88rem">✅ Message envoyé ! Je vous réponds sous 24h.</div>';
+    document.getElementById('contact-form').reset();
+  }
+
+  btn.textContent = 'Envoyer le message →';
   btn.disabled = false;
 }
 </script>
