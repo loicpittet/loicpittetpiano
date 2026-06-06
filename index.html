@@ -209,8 +209,21 @@ textarea.finput{resize:none;height:120px}
 .mobile-menu a:hover{color:var(--accent)}
 .mobile-menu a.active{color:var(--accent)}
 .mobile-menu .mob-contact{background:var(--text);color:var(--white)!important;padding:14px 20px!important;border-radius:8px;text-align:center;justify-content:center;margin-top:12px;border:none!important}
-@media(min-width:901px){#hamburger{display:none!important}.mobile-menu{display:none!important}}
-@media(max-width:900px){#hamburger{display:flex!important}.nav-links{display:none!important}.nav-cta{display:none!important}}
+.mobile-menu{display:none!important}}
+.nav-links{display:none!important}.nav-cta{display:none!important}}
+
+/* HAMBURGER - desktop hidden, mobile visible */
+#hamburger { display: none; }
+@media(max-width:900px) {
+  #hamburger { display: flex !important; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+}
+
+/* Hamburger open animation */
+#hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+#hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+#hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 </style>
 </style>
 
@@ -229,7 +242,7 @@ textarea.finput{resize:none;height:120px}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html" class="active">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
-  <button id="hamburger" style="display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:8px;z-index:1001" onclick="toggleMenu()">
+  <button id="hamburger" onclick="toggleMenu()" style="flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:8px;z-index:1001">
     <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s;transform-origin:center"></span>
     <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s"></span>
     <span style="display:block;width:22px;height:2px;background:#1a1a1a;border-radius:2px;transition:all .3s;transform-origin:center"></span>
@@ -401,6 +414,7 @@ reveals.forEach(el => revealObserver.observe(el));
 })();
 </script>
 
+
 <script>
 function toggleMenu() {
   var btn = document.getElementById('hamburger');
@@ -408,7 +422,6 @@ function toggleMenu() {
   btn.classList.toggle('open');
   menu.classList.toggle('open');
 }
-// Close menu when clicking a link
 document.querySelectorAll('.mobile-menu a').forEach(function(a){
   a.addEventListener('click', function(){
     document.getElementById('hamburger').classList.remove('open');
