@@ -235,7 +235,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   margin-top: 10px;
 }
 
-@media(max-width:900px){
+@media(hover: none) and (pointer: coarse){
   .card-detail {
     max-height: 0 !important;
     overflow: hidden;
@@ -409,7 +409,7 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 <script>
-if (window.innerWidth <= 900) {
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
   var cards = document.querySelectorAll('.card');
 
   function updateCards() {
