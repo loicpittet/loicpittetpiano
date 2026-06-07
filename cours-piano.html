@@ -413,32 +413,61 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
   var cards = document.querySelectorAll('.card');
 
   function updateCards() {
-    var windowCenter = window.scrollY + window.innerHeight / 2;
-    var closest = null;
-    var closestDist = Infinity;
+    var screenMid = window.innerHeight / 2;
+    var grid = document.querySelector('.grid2');
+    var cols = grid ? window.getComputedStyle(grid).gridTemplateColumns.split(' ').length : 1;
 
-    cards.forEach(function(card) {
-      var rect = card.getBoundingClientRect();
-      var cardCenter = rect.top + rect.height / 2;
-      var dist = Math.abs(window.innerHeight / 2 - cardCenter);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closest = card;
-      }
-    });
+    if (cols >= 2) {
+      // 2 columns - find closest in each column
+      var leftCards = [], rightCards = [];
+      cards.forEach(function(card, i) {
+        if (i % 2 === 0) leftCards.push(card);
+        else rightCards.push(card);
+      });
 
-    cards.forEach(function(card) {
-      var detail = card.querySelector('.card-detail');
-      if (!detail) return;
-      if (card === closest) {
-        detail.classList.add('visible');
-      } else {
-        detail.classList.remove('visible');
+      function closestToCenter(list) {
+        var closest = null, closestDist = Infinity;
+        list.forEach(function(card) {
+          var rect = card.getBoundingClientRect();
+          var cardMid = rect.top + rect.height / 2;
+          var dist = Math.abs(screenMid - cardMid);
+          if (dist < closestDist) { closestDist = dist; closest = card; }
+        });
+        return closest;
       }
-    });
+
+      var leftBest = closestToCenter(leftCards);
+      var rightBest = closestToCenter(rightCards);
+
+      cards.forEach(function(card) {
+        var detail = card.querySelector('.card-detail');
+        if (!detail) return;
+        if (card === leftBest || card === rightBest) {
+          detail.classList.add('visible');
+        } else {
+          detail.classList.remove('visible');
+        }
+      });
+
+    } else {
+      // 1 column - find single closest
+      var closest = null, closestDist = Infinity;
+      cards.forEach(function(card) {
+        var rect = card.getBoundingClientRect();
+        var cardMid = rect.top + rect.height / 2;
+        var dist = Math.abs(screenMid - cardMid);
+        if (dist < closestDist) { closestDist = dist; closest = card; }
+      });
+      cards.forEach(function(card) {
+        var detail = card.querySelector('.card-detail');
+        if (!detail) return;
+        detail.classList.toggle('visible', card === closest);
+      });
+    }
   }
 
   window.addEventListener('scroll', updateCards);
+  window.addEventListener('resize', updateCards);
   updateCards();
 }
 </script>
