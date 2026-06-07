@@ -422,7 +422,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Europe</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/gAwaGVnsau4" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/gAwaGVnsau4?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div><div class="vid-card">
       <div class="vid-info">
@@ -430,7 +430,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Frank Sinatra</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div><div class="vid-card">
       <div class="vid-info">
@@ -438,7 +438,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Gloria Gaynor</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div><div class="vid-card">
       <div class="vid-info">
@@ -446,7 +446,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Whitney Houston</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/0g6-By2vpNo" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/0g6-By2vpNo?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div><div class="vid-card">
       <div class="vid-info">
@@ -454,7 +454,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Beethoven</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/JGaPqriD_fo" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/JGaPqriD_fo?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div><div class="vid-card">
       <div class="vid-info">
@@ -462,7 +462,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Erroll Garner</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/tahtQ-GomMQ" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/tahtQ-GomMQ?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div><div class="vid-card">
       <div class="vid-info">
@@ -470,7 +470,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Édith Piaf</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/GmhhmY5dCEc" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/GmhhmY5dCEc?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div><div class="vid-card">
       <div class="vid-info">
@@ -478,7 +478,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
         <div class="vid-artist">Franz Schubert</div>
       </div>
       <div class="vid-frame">
-        <iframe src="https://www.youtube.com/embed/qjGy5Kbko6M" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe src="https://www.youtube.com/embed/qjGy5Kbko6M?enablejsapi=1" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div>
     </div>
@@ -809,6 +809,9 @@ document.addEventListener('keydown', function(e) {
 
 
 
+
+
+
 <script>
 function scrollVids(dir) {
   var track = document.getElementById('vid-track');
@@ -817,6 +820,34 @@ function scrollVids(dir) {
   var w = card ? card.offsetWidth + 16 : 236;
   track.scrollLeft += dir * w;
 }
+
+// Stop all iframes except the one playing
+function stopOthers(clickedIframe) {
+  document.querySelectorAll('.vid-frame iframe').forEach(function(iframe) {
+    if (iframe !== clickedIframe) {
+      var src = iframe.src;
+      iframe.src = '';
+      iframe.src = src;
+    }
+  });
+}
+
+// Detect play via postMessage from YouTube
+window.addEventListener('message', function(e) {
+  if (!e.data || typeof e.data !== 'string') return;
+  try {
+    var data = JSON.parse(e.data);
+    if (data.event === 'infoDelivery' && data.info && data.info.playerState === 1) {
+      var iframes = document.querySelectorAll('.vid-frame iframe');
+      iframes.forEach(function(iframe) {
+        if (iframe.contentWindow === e.source) {
+          stopOthers(iframe);
+        }
+      });
+    }
+  } catch(err) {}
+});
+
 // Touch swipe
 (function(){
   var track = document.getElementById('vid-track');
