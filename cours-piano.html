@@ -399,23 +399,33 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+
+
+
 <script>
-// Mobile scroll reveal for card details
 if (window.innerWidth <= 900) {
   var cards = document.querySelectorAll('.card');
-  
+
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       var detail = entry.target.querySelector('.card-detail');
       if (!detail) return;
-      
+
       if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        // Close all other cards
+        cards.forEach(function(c) {
+          if (c !== entry.target) {
+            var d = c.querySelector('.card-detail');
+            if (d) d.classList.remove('visible');
+          }
+        });
+        // Open this one
         detail.classList.add('visible');
       } else {
         detail.classList.remove('visible');
       }
     });
-  }, { 
+  }, {
     threshold: 0.5,
     rootMargin: '-10% 0px -10% 0px'
   });
@@ -425,5 +435,4 @@ if (window.innerWidth <= 900) {
   });
 }
 </script>
-
 </body></html>
