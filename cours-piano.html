@@ -277,6 +277,35 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
     cursor: default;
   }
 }
+
+
+@media(max-width:900px){
+  .car-item{flex:0 0 calc(50% - 10px)}
+  .car-section{padding:0 48px}
+}
+@media(max-width:600px){
+  .car-item{flex:0 0 calc(100% - 0px)}
+  .car-section{padding:0 40px}
+}
+
+
+@media(max-width:1024px){.car-item{flex:0 0 30%}}
+@media(max-width:768px){.car-item{flex:0 0 80%}}
+@media(max-width:480px){.car-item{flex:0 0 90%}}
+
+
+
+
+
+/* VIDEO SCROLL */
+.vid-scroll{position:relative;display:flex;align-items:center;gap:10px;margin-top:16px}
+.vid-track{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;flex:1;padding:4px 0}
+.vid-track::-webkit-scrollbar{display:none}
+.vid-card{flex:0 0 220px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white)}
+.vid-frame{position:relative;padding-bottom:177.77%;height:0;overflow:hidden}
+.vid-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.vid-prev,.vid-next{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.vid-prev:hover,.vid-next:hover{background:var(--accent);color:white;border-color:var(--accent)}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -369,6 +398,143 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   </script>
 </section>
 
+
+
+
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Fly Me to the Moon</div>
+        <div class="vid-artist">Frank Sinatra</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">I Will Survive</div>
+        <div class="vid-artist">Gloria Gaynor</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">I Have Nothing</div>
+        <div class="vid-artist">Whitney Houston</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/0g6-By2vpNo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Moonlight Sonata</div>
+        <div class="vid-artist">Beethoven</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/JGaPqriD_fo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Misty</div>
+        <div class="vid-artist">Erroll Garner</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/tahtQ-GomMQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Hymne à l'Amour</div>
+        <div class="vid-artist">Édith Piaf</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/GmhhmY5dCEc?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Impromptu Op.90 No.3</div>
+        <div class="vid-artist">Franz Schubert</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/qjGy5Kbko6M?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    
+
+
+
+<!-- VIDEOS COURS -->
+<section class="sec">
+  <div class="vid-scroll reveal">
+    <button class="vid-prev" onclick="scrollVids('vid-track-cours', -1)">&#8249;</button>
+    <div class="vid-track" id="vid-track-cours">
+      <div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">The Final Countdown</div>
+        <div class="vid-artist">Europe</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/gAwaGVnsau4?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Fly Me to the Moon</div>
+        <div class="vid-artist">Frank Sinatra</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">I Will Survive</div>
+        <div class="vid-artist">Gloria Gaynor</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">I Have Nothing</div>
+        <div class="vid-artist">Whitney Houston</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/0g6-By2vpNo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Moonlight Sonata</div>
+        <div class="vid-artist">Beethoven</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/JGaPqriD_fo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Misty</div>
+        <div class="vid-artist">Erroll Garner</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/tahtQ-GomMQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Hymne à l'Amour</div>
+        <div class="vid-artist">Édith Piaf</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/GmhhmY5dCEc?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Impromptu Op.90 No.3</div>
+        <div class="vid-artist">Franz Schubert</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/qjGy5Kbko6M?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div>
+    </div>
+    <button class="vid-next" onclick="scrollVids('vid-track-cours', 1)">&#8250;</button>
+  </div>
+</section>
 <section class="sec sec-dark" style="text-align:center">
   <div class="reveal"><h2 style="color:white">Prêt à commencer <em>l'aventure</em> ?</h2></div>
   <div class="reveal" data-delay="100"><p class="sub" style="margin:0 auto 36px;text-align:center">Premier cours offert · Aucun engagement · Réponse en moins d'1h</p></div>
@@ -493,5 +659,163 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
   updateActive();
 }
 </script>
+
+
+
+
+
+<script>
+(function() {
+  var track = document.getElementById('car-track');
+  if (!track) return;
+  
+  var items = track.querySelectorAll('.car-item');
+  var total = items.length;
+  var current = 0;
+  var startX = 0;
+  var isDragging = false;
+
+  function getVisible() {
+    return window.innerWidth > 900 ? 4 : window.innerWidth > 600 ? 2 : 1;
+  }
+
+  // Create dots
+  var dotsContainer = document.getElementById('car-dots');
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'car-dot' + (i === 0 ? ' active' : '');
+    dot.dataset.idx = i;
+    dot.onclick = function() { goTo(parseInt(this.dataset.idx)); };
+    dotsContainer.appendChild(dot);
+  }
+
+  function stopAllVideos() {
+    // Reset all iframes to stop video
+    items.forEach(function(item) {
+      var iframe = item.querySelector('iframe');
+      if (iframe) {
+        var src = iframe.src;
+        iframe.src = '';
+        iframe.src = src;
+      }
+    });
+  }
+
+  function goTo(idx) {
+    current = ((idx % total) + total) % total;
+    var itemWidth = items[0].offsetWidth + 20;
+    track.style.transform = 'translateX(-' + (current * itemWidth) + 'px)';
+    document.querySelectorAll('.car-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    // Stop videos that are not visible
+    var visible = getVisible();
+    items.forEach(function(item, i) {
+      var iframe = item.querySelector('iframe');
+      if (!iframe) return;
+      var isVisible = i >= current && i < current + visible;
+      if (!isVisible) {
+        var src = iframe.getAttribute('data-src') || iframe.src;
+        iframe.setAttribute('data-src', src);
+        iframe.src = '';
+      }
+    });
+  }
+
+  window.carMove = function(dir) { goTo(current + dir); };
+
+  // Touch/swipe support
+  track.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function(e) {
+    if (!isDragging) return;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function(e) {
+    if (!isDragging) return;
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(current + (diff > 0 ? 1 : -1));
+    }
+    isDragging = false;
+  });
+
+  // Mouse drag support
+  track.addEventListener('mousedown', function(e) {
+    startX = e.clientX;
+    isDragging = true;
+  });
+  track.addEventListener('mouseup', function(e) {
+    if (!isDragging) return;
+    var diff = startX - e.clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(current + (diff > 0 ? 1 : -1));
+    }
+    isDragging = false;
+  });
+  track.addEventListener('mouseleave', function() { isDragging = false; });
+
+  window.addEventListener('resize', function() { goTo(current); });
+
+  goTo(0);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Scroll function
+function scrollVids(trackId, dir) {
+  var track = document.getElementById(trackId);
+  if (!track) return;
+  var card = track.querySelector('.vid-card');
+  var w = card ? card.offsetWidth + 16 : 236;
+  track.scrollLeft += dir * w;
+}
+
+// YouTube API - stop all iframes except the one playing
+var YT_READY = false;
+window.onYouTubeIframeAPIReady = function() { YT_READY = true; };
+
+// Listen for YouTube player state changes via postMessage
+window.addEventListener('message', function(e) {
+  if (!e.data) return;
+  var data;
+  try { data = JSON.parse(e.data); } catch(err) { return; }
+  
+  // When a video starts playing (state 1)
+  if (data.event === 'infoDelivery' && data.info && data.info.playerState === 1) {
+    document.querySelectorAll('.vid-frame iframe').forEach(function(iframe) {
+      if (iframe.contentWindow !== e.source) {
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+      }
+    });
+  }
+});
+
+// Touch swipe for all tracks
+document.querySelectorAll('.vid-track').forEach(function(track) {
+  var startX = 0;
+  track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; },{passive:true});
+  track.addEventListener('touchend', function(e){
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) track.scrollLeft += diff;
+  },{passive:true});
+});
+</script>
+
 
 </body></html>
