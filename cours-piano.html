@@ -217,6 +217,23 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 #ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
 #ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
 #ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* Card hover detail */
+.card-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 0;
+}
+.card:hover .card-detail {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 10px;
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -256,12 +273,12 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   <div class="reveal"><div class="ey">Pourquoi choisir Loïc</div></div>
   <div class="reveal" data-delay="100"><h2>Une approche <em>unique</em></h2></div>
   <div class="grid2">
-    <div class="card reveal from-left" data-delay="0"><div class="card-icon">🎯</div><div class="card-title">Cours conçus sur mesure</div><div class="card-desc">Chaque leçon est pensée pour vous — vos envies, votre rythme, votre personnalité. Aucun élève ne reçoit le même cours.</div></div>
-    <div class="card reveal from-right" data-delay="100"><div class="card-icon">👂</div><div class="card-title">Très à l'écoute</div><div class="card-desc">Vous choisissez les morceaux que vous voulez apprendre. L'envie de jouer est le moteur de la progression.</div></div>
-    <div class="card reveal from-left" data-delay="150"><div class="card-icon">🚀</div><div class="card-title">Progrès rapide garanti</div><div class="card-desc">Méthode équilibrée — technique, théorie et pratique — pour progresser vite et naturellement.</div></div>
-    <div class="card reveal from-right" data-delay="200"><div class="card-icon">🌟</div><div class="card-title">Atmosphère conviviale</div><div class="card-desc">Ambiance détendue et bienveillante. Disponible en semaine et week-end pour toute question.</div></div>
-    <div class="card reveal from-left" data-delay="250"><div class="card-icon">📖</div><div class="card-title">Partition &amp; oreille</div><div class="card-desc">J'enseigne par partition et d'oreille pour une grande liberté dans l'interprétation musicale.</div></div>
-    <div class="card reveal from-right" data-delay="300"><div class="card-icon">🎓</div><div class="card-title">23 ans de musique</div><div class="card-desc">Formé au Conservatoire populaire de Genève et à l'AMR. Musicien et professeur passionné.</div></div>
+    <div class="card reveal from-left" data-delay="0"><div class="card-icon">🎯</div><div class="card-title">Cours conçus sur mesure</div><div class="card-desc">Chaque leçon est pensée pour vous — vos envies, votre rythme, votre personnalité. Aucun élève ne reçoit le même cours.</div><div class="card-detail">Avant de commencer, on discute ensemble de vos objectifs, de votre niveau et de vos morceaux préférés. Chaque programme est unique et évolue avec vous au fil des semaines.</div></div>
+    <div class="card reveal from-right" data-delay="100"><div class="card-icon">👂</div><div class="card-title">Très à l'écoute</div><div class="card-desc">Vous choisissez les morceaux que vous voulez apprendre. L'envie de jouer est le moteur de la progression.</div><div class="card-detail">Pas de méthode imposée ni de répertoire obligatoire. Vous voulez jouer du Chopin ? De la pop ? Des musiques de films ? On le fait ensemble, à votre rythme. J'ai également l'habitude d'accompagner des profils atypiques — TDAH, autisme, troubles de l'apprentissage — avec une approche adaptée et bienveillante.</div></div>
+    <div class="card reveal from-left" data-delay="150"><div class="card-icon">🚀</div><div class="card-title">Progrès rapide garanti</div><div class="card-desc">Méthode équilibrée — technique, théorie et pratique — pour progresser vite et naturellement.</div><div class="card-detail">Dès les premières leçons, vous jouez de vrais morceaux. La technique s'acquiert progressivement, sans jamais perdre le plaisir de jouer. Mes élèves progressent en moyenne 2x plus vite qu'en méthode traditionnelle.</div></div>
+    <div class="card reveal from-right" data-delay="200"><div class="card-icon">🌟</div><div class="card-title">Atmosphère conviviale</div><div class="card-desc">Ambiance détendue et bienveillante. Disponible en semaine et week-end pour toute question.</div><div class="card-detail">Pas de pression, pas de jugement. Que vous soyez débutant ou confirmé, jeune ou adulte, chaque cours est un moment de plaisir et de bienveillance. Je reste disponible par message entre les cours.</div></div>
+    <div class="card reveal from-left" data-delay="250"><div class="card-icon">📖</div><div class="card-title">Partition &amp; oreille</div><div class="card-desc">J'enseigne par partition et d'oreille pour une grande liberté dans l'interprétation musicale.</div><div class="card-detail">Savoir lire une partition ET jouer d'oreille vous donne une liberté totale. Vous pourrez reprendre n'importe quel morceau entendu à la radio et l'adapter à votre style.</div></div>
+    <div class="card reveal from-right" data-delay="300"><div class="card-icon">🎓</div><div class="card-title">23 ans de musique</div><div class="card-desc">Formé au Conservatoire populaire de Genève et à l'AMR. Musicien et professeur passionné.</div><div class="card-detail">Formé au Conservatoire populaire de Genève et à l'AMR, j'ai acquis une expertise dans de nombreux styles — classique, jazz, blues, pop. J'ai également ouvert mon propre studio d'enregistrement à Genève.</div></div>
   </div>
 </section>
 
