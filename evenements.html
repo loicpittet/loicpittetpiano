@@ -294,7 +294,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 /* CAROUSEL */
 .car-section{position:relative;overflow:hidden;margin-top:40px;padding:0 60px}
 .car-track{display:flex;gap:20px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
-.car-item{flex:0 0 calc(33.33% - 14px);border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);transition:box-shadow .3s,border-color .3s}
+.car-item{flex:0 0 calc(25% - 15px);border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);transition:box-shadow .3s,border-color .3s}
 .car-item:hover{box-shadow:0 12px 40px rgba(0,0,0,.08);border-color:var(--accent-l)}
 .vid-header{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border)}
 .vid-emoji{font-size:1.3rem;width:38px;height:38px;background:var(--accent-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -764,6 +764,9 @@ document.addEventListener('keydown', function(e) {
 </script>
 
 
+
+
+
 <script>
 (function() {
   var track = document.getElementById('car-track');
@@ -772,7 +775,12 @@ document.addEventListener('keydown', function(e) {
   var items = track.querySelectorAll('.car-item');
   var total = items.length;
   var current = 0;
-  var visibleCount = window.innerWidth > 900 ? 3 : window.innerWidth > 600 ? 2 : 1;
+  var startX = 0;
+  var isDragging = false;
+
+  function getVisible() {
+    return window.innerWidth > 900 ? 4 : window.innerWidth > 600 ? 2 : 1;
+  }
 
   // Create dots
   var dotsContainer = document.getElementById('car-dots');
@@ -784,6 +792,18 @@ document.addEventListener('keydown', function(e) {
     dotsContainer.appendChild(dot);
   }
 
+  function stopAllVideos() {
+    // Reset all iframes to stop video
+    items.forEach(function(item) {
+      var iframe = item.querySelector('iframe');
+      if (iframe) {
+        var src = iframe.src;
+        iframe.src = '';
+        iframe.src = src;
+      }
+    });
+  }
+
   function goTo(idx) {
     current = ((idx % total) + total) % total;
     var itemWidth = items[0].offsetWidth + 20;
@@ -791,14 +811,59 @@ document.addEventListener('keydown', function(e) {
     document.querySelectorAll('.car-dot').forEach(function(d, i) {
       d.classList.toggle('active', i === current);
     });
+    // Stop videos that are not visible
+    var visible = getVisible();
+    items.forEach(function(item, i) {
+      var iframe = item.querySelector('iframe');
+      if (!iframe) return;
+      var isVisible = i >= current && i < current + visible;
+      if (!isVisible) {
+        var src = iframe.getAttribute('data-src') || iframe.src;
+        iframe.setAttribute('data-src', src);
+        iframe.src = '';
+      }
+    });
   }
 
   window.carMove = function(dir) { goTo(current + dir); };
 
-  window.addEventListener('resize', function() {
-    visibleCount = window.innerWidth > 900 ? 3 : window.innerWidth > 600 ? 2 : 1;
-    goTo(current);
+  // Touch/swipe support
+  track.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function(e) {
+    if (!isDragging) return;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function(e) {
+    if (!isDragging) return;
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(current + (diff > 0 ? 1 : -1));
+    }
+    isDragging = false;
   });
+
+  // Mouse drag support
+  track.addEventListener('mousedown', function(e) {
+    startX = e.clientX;
+    isDragging = true;
+  });
+  track.addEventListener('mouseup', function(e) {
+    if (!isDragging) return;
+    var diff = startX - e.clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(current + (diff > 0 ? 1 : -1));
+    }
+    isDragging = false;
+  });
+  track.addEventListener('mouseleave', function() { isDragging = false; });
+
+  window.addEventListener('resize', function() { goTo(current); });
+
+  goTo(0);
 })();
 </script>
 
