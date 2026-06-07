@@ -253,6 +253,14 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
     margin-top: 10px;
   }
 }
+
+@media(hover: none) and (pointer: coarse){
+  .card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: var(--border) !important;
+  }
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -432,6 +440,7 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
           var cardMid = rect.top + rect.height / 2;
           var dist = Math.abs(screenMid - cardMid);
           if (dist < closestDist) { closestDist = dist; closest = card; }
+
         });
         return closest;
       }
@@ -467,6 +476,7 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
   }
 
   window.addEventListener('scroll', updateCards);
+  window.addEventListener('touchmove', updateCards);
   window.addEventListener('resize', updateCards);
   updateCards();
 }
