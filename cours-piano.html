@@ -279,6 +279,15 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+@media(hover: none) and (pointer: coarse){
+  .card {
+    pointer-events: none;
+  }
+  .card .card-detail {
+    pointer-events: none;
+  }
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -434,79 +443,5 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
-<script>
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-  var cards = document.querySelectorAll('.card');
 
-  function updateCards() {
-    var screenMid = window.innerHeight / 2;
-    var grid = document.querySelector('.grid2');
-    var cols = grid ? window.getComputedStyle(grid).gridTemplateColumns.split(' ').length : 1;
-
-    if (cols >= 2) {
-      // 2 columns - find closest in each column
-      var leftCards = [], rightCards = [];
-      cards.forEach(function(card, i) {
-        if (i % 2 === 0) leftCards.push(card);
-        else rightCards.push(card);
-      });
-
-      function closestToCenter(list) {
-        var closest = null, closestDist = Infinity;
-        list.forEach(function(card) {
-          var rect = card.getBoundingClientRect();
-          var cardMid = rect.top + rect.height / 2;
-          var dist = Math.abs(screenMid - cardMid);
-          if (dist < closestDist) { closestDist = dist; closest = card; }
-
-        });
-        return closest;
-      }
-
-      var leftBest = closestToCenter(leftCards);
-      var rightBest = closestToCenter(rightCards);
-
-      cards.forEach(function(card) {
-        var detail = card.querySelector('.card-detail');
-        if (!detail) return;
-        if (card === leftBest || card === rightBest) {
-          detail.classList.add('visible');
-        } else {
-          detail.classList.remove('visible');
-        }
-      });
-
-    } else {
-      // 1 column - find single closest
-      var closest = null, closestDist = Infinity;
-      cards.forEach(function(card) {
-        var rect = card.getBoundingClientRect();
-        var cardMid = rect.top + rect.height / 2;
-        var dist = Math.abs(screenMid - cardMid);
-        if (dist < closestDist) { closestDist = dist; closest = card; }
-      });
-      cards.forEach(function(card) {
-        var detail = card.querySelector('.card-detail');
-        if (!detail) return;
-        detail.classList.toggle('visible', card === closest);
-      });
-    }
-  }
-
-  window.addEventListener('scroll', updateCards);
-  window.addEventListener('touchmove', updateCards);
-  window.addEventListener('resize', updateCards);
-  updateCards();
-}
-</script>
-
-<script>
-if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-  document.querySelectorAll('.card').forEach(function(card) {
-    card.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-    }, { passive: false });
-  });
-}
-</script>
 </body></html>
