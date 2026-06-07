@@ -291,22 +291,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .vid-artist{font-size:0.78rem;color:var(--muted)}
 @media(max-width:768px){.vid-grid{grid-template-columns:1fr}}
 
-/* CAROUSEL */
-.car-section{position:relative;overflow:hidden;margin-top:40px;padding:0 60px}
-.car-track{display:flex;gap:20px;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
-.car-item{flex:0 0 calc(25% - 15px);border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);transition:box-shadow .3s,border-color .3s}
-.car-item:hover{box-shadow:0 12px 40px rgba(0,0,0,.08);border-color:var(--accent-l)}
-.vid-header{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border)}
-.vid-emoji{font-size:1.3rem;width:38px;height:38px;background:var(--accent-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.vid-title{font-size:0.85rem;font-weight:500;color:var(--text);margin-bottom:2px}
-.vid-artist{font-size:0.74rem;color:var(--muted)}
-.car-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .25s;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.1)}
-.car-btn:hover{background:var(--accent);color:white;border-color:var(--accent)}
-.car-prev{left:0}
-.car-next{right:0}
-.car-dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
-.car-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .25s,transform .25s}
-.car-dot.active{background:var(--accent);transform:scale(1.3)}
+
 @media(max-width:900px){
   .car-item{flex:0 0 calc(50% - 10px)}
   .car-section{padding:0 48px}
@@ -316,24 +301,23 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   .car-section{padding:0 40px}
 }
 
-/* CAROUSEL */
-.car-wrap{position:relative;display:flex;align-items:center;gap:12px;margin-top:32px}
-.car-viewport{overflow:hidden;flex:1;border-radius:16px}
-.car-track{display:flex;gap:16px;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);will-change:transform}
-.car-item{flex:0 0 22%;min-width:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white)}
-.car-info{padding:14px 16px;border-bottom:1px solid var(--border)}
-.car-title{font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:400;color:var(--text);margin-bottom:3px}
-.car-artist{font-size:0.72rem;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase}
-.car-video{position:relative;padding-bottom:177.77%;height:0;overflow:hidden}
-.car-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
-.car-btn{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-.car-btn:hover{background:var(--accent);color:white;border-color:var(--accent)}
-.car-dots{display:flex;justify-content:center;gap:8px;margin-top:20px}
-.car-dot{width:7px;height:7px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .25s,transform .25s;border:none;padding:0}
-.car-dot.active{background:var(--accent);transform:scale(1.3)}
+
 @media(max-width:1024px){.car-item{flex:0 0 30%}}
 @media(max-width:768px){.car-item{flex:0 0 80%}}
 @media(max-width:480px){.car-item{flex:0 0 90%}}
+
+/* VIDEO SCROLL */
+.vid-scroll{position:relative;display:flex;align-items:center;gap:10px;margin-top:32px}
+.vid-track{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;flex:1;padding:4px 0}
+.vid-track::-webkit-scrollbar{display:none}
+.vid-card{flex:0 0 220px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white)}
+.vid-info{padding:12px 14px;border-bottom:1px solid var(--border)}
+.vid-title{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:400;color:var(--text);margin-bottom:2px}
+.vid-artist{font-size:0.7rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase}
+.vid-frame{position:relative;padding-bottom:177.77%;height:0;overflow:hidden}
+.vid-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.vid-prev,.vid-next{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.vid-prev:hover,.vid-next:hover{background:var(--accent);color:white;border-color:var(--accent)}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html" class="active">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -423,84 +407,83 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 
 
 
-<!-- CAROUSEL -->
+
+
+<!-- VIDEOS -->
 <section class="sec">
   <div class="reveal"><div class="ey">Extraits musicaux</div></div>
   <div class="reveal" data-delay="100"><h2>Mon <em>répertoire</em> en vidéo</h2></div>
-  <div class="car-wrap reveal" data-delay="150">
-    <button class="car-btn car-prev" onclick="carPrev()">&#8249;</button>
-    <div class="car-viewport">
-      <div class="car-track" id="car-track">
-        <div class="car-item">
-        <div class="car-info">
-          <div class="car-title">The Final Countdown</div>
-          <div class="car-artist">Europe</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/gAwaGVnsau4" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
-      </div><div class="car-item">
-        <div class="car-info">
-          <div class="car-title">Fly Me to the Moon</div>
-          <div class="car-artist">Frank Sinatra</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/7kLywQ_LXmQ" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
-      </div><div class="car-item">
-        <div class="car-info">
-          <div class="car-title">I Will Survive</div>
-          <div class="car-artist">Gloria Gaynor</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/2AEkLCVb0lQ" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
-      </div><div class="car-item">
-        <div class="car-info">
-          <div class="car-title">I Have Nothing</div>
-          <div class="car-artist">Whitney Houston</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/0g6-By2vpNo" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
-      </div><div class="car-item">
-        <div class="car-info">
-          <div class="car-title">Moonlight Sonata</div>
-          <div class="car-artist">Beethoven</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/JGaPqriD_fo" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
-      </div><div class="car-item">
-        <div class="car-info">
-          <div class="car-title">Misty</div>
-          <div class="car-artist">Erroll Garner</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/tahtQ-GomMQ" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
-      </div><div class="car-item">
-        <div class="car-info">
-          <div class="car-title">Hymne à l'Amour</div>
-          <div class="car-artist">Édith Piaf</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/GmhhmY5dCEc" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
-      </div><div class="car-item">
-        <div class="car-info">
-          <div class="car-title">Impromptu Op.90 No.3</div>
-          <div class="car-artist">Franz Schubert</div>
-        </div>
-        <div class="car-video">
-          <iframe data-src="https://www.youtube.com/embed/qjGy5Kbko6M" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-        </div>
+  <div class="vid-scroll reveal" data-delay="150">
+    <button class="vid-prev" onclick="scrollVids(-1)">&#8249;</button>
+    <div class="vid-track" id="vid-track">
+      <div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">The Final Countdown</div>
+        <div class="vid-artist">Europe</div>
       </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/gAwaGVnsau4" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Fly Me to the Moon</div>
+        <div class="vid-artist">Frank Sinatra</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">I Will Survive</div>
+        <div class="vid-artist">Gloria Gaynor</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">I Have Nothing</div>
+        <div class="vid-artist">Whitney Houston</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/0g6-By2vpNo" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Moonlight Sonata</div>
+        <div class="vid-artist">Beethoven</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/JGaPqriD_fo" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Misty</div>
+        <div class="vid-artist">Erroll Garner</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/tahtQ-GomMQ" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Hymne à l'Amour</div>
+        <div class="vid-artist">Édith Piaf</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/GmhhmY5dCEc" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Impromptu Op.90 No.3</div>
+        <div class="vid-artist">Franz Schubert</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/qjGy5Kbko6M" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </div>
     </div>
-    <button class="car-btn car-next" onclick="carNext()">&#8250;</button>
+    </div>
+    <button class="vid-next" onclick="scrollVids(1)">&#8250;</button>
   </div>
-  <div class="car-dots" id="car-dots"></div>
 </section>
 
 <!-- GALERIE -->
@@ -824,66 +807,27 @@ document.addEventListener('keydown', function(e) {
 </script>
 
 
+
+
 <script>
+function scrollVids(dir) {
+  var track = document.getElementById('vid-track');
+  if (!track) return;
+  var card = track.querySelector('.vid-card');
+  var w = card ? card.offsetWidth + 16 : 236;
+  track.scrollLeft += dir * w;
+}
+// Touch swipe
 (function(){
-  var track = document.getElementById('car-track');
-  if(!track) return;
-  var items = Array.from(track.querySelectorAll('.car-item'));
-  var dots = document.getElementById('car-dots');
-  var total = items.length;
-  var cur = 0;
+  var track = document.getElementById('vid-track');
+  if (!track) return;
   var startX = 0;
-
-  function visible(){ return window.innerWidth>1024?4:window.innerWidth>768?3:window.innerWidth>480?1:1; }
-
-  // Build dots
-  items.forEach(function(_,i){
-    var d=document.createElement('button');
-    d.className='car-dot'+(i===0?' active':'');
-    d.onclick=function(){goTo(i);};
-    dots.appendChild(d);
-  });
-
-  function loadIframe(item){
-    var iframe=item.querySelector('iframe');
-    if(iframe && !iframe.src && iframe.dataset.src){
-      iframe.src=iframe.dataset.src;
-    }
-  }
-
-  function stopIframe(item){
-    var iframe=item.querySelector('iframe');
-    if(iframe && iframe.src){
-      iframe.src='';
-    }
-  }
-
-  function goTo(idx){
-    cur=((idx%total)+total)%total;
-    var w=items[0].offsetWidth+16;
-    track.style.transform='translateX(-'+(cur*w)+'px)';
-    var v=visible();
-    items.forEach(function(item,i){
-      if(i>=cur && i<cur+v){ loadIframe(item); }
-      else{ stopIframe(item); }
-    });
-    Array.from(dots.querySelectorAll('.car-dot')).forEach(function(d,i){
-      d.classList.toggle('active',i===cur);
-    });
-  }
-
-  window.carNext=function(){ goTo(cur+1); };
-  window.carPrev=function(){ goTo(cur-1); };
-
-  // Touch swipe
-  track.addEventListener('touchstart',function(e){ startX=e.touches[0].clientX; },{passive:true});
-  track.addEventListener('touchend',function(e){
-    var diff=startX-e.changedTouches[0].clientX;
-    if(Math.abs(diff)>40){ goTo(cur+(diff>0?1:-1)); }
-  },{passive:true});
-
-  window.addEventListener('resize',function(){ goTo(cur); });
-  goTo(0);
+  track.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', function(e){
+    var diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { track.scrollLeft += diff; }
+  }, {passive:true});
 })();
 </script>
+
 </body></html>
