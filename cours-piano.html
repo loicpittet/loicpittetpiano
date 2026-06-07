@@ -499,4 +499,14 @@ if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
   updateCards();
 }
 </script>
+
+<script>
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  document.querySelectorAll('.card').forEach(function(card) {
+    card.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+    }, { passive: false });
+  });
+}
+</script>
 </body></html>
