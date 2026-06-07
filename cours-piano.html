@@ -237,15 +237,19 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 
 @media(max-width:900px){
   .card-detail {
-    max-height: 0;
+    max-height: 0 !important;
     overflow: hidden;
-    opacity: 0;
+    opacity: 0 !important;
     transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.3s ease;
     margin-top: 0;
   }
+  .card:hover .card-detail {
+    max-height: 0 !important;
+    opacity: 0 !important;
+  }
   .card-detail.visible {
-    max-height: 300px;
-    opacity: 1;
+    max-height: 300px !important;
+    opacity: 1 !important;
     margin-top: 10px;
   }
 }
@@ -402,37 +406,40 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+
+
 <script>
 if (window.innerWidth <= 900) {
   var cards = document.querySelectorAll('.card');
 
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      var detail = entry.target.querySelector('.card-detail');
-      if (!detail) return;
+  function updateCards() {
+    var windowCenter = window.scrollY + window.innerHeight / 2;
+    var closest = null;
+    var closestDist = Infinity;
 
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
-        // Close all other cards
-        cards.forEach(function(c) {
-          if (c !== entry.target) {
-            var d = c.querySelector('.card-detail');
-            if (d) d.classList.remove('visible');
-          }
-        });
-        // Open this one
+    cards.forEach(function(card) {
+      var rect = card.getBoundingClientRect();
+      var cardCenter = rect.top + rect.height / 2;
+      var dist = Math.abs(window.innerHeight / 2 - cardCenter);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = card;
+      }
+    });
+
+    cards.forEach(function(card) {
+      var detail = card.querySelector('.card-detail');
+      if (!detail) return;
+      if (card === closest) {
         detail.classList.add('visible');
       } else {
         detail.classList.remove('visible');
       }
     });
-  }, {
-    threshold: [0, 0.25, 0.5, 0.75, 1],
-    rootMargin: '-20% 0px -20% 0px'
-  });
+  }
 
-  cards.forEach(function(card) {
-    observer.observe(card);
-  });
+  window.addEventListener('scroll', updateCards);
+  updateCards();
 }
 </script>
 </body></html>
