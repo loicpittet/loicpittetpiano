@@ -217,6 +217,56 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 #ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
 #ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
 #ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* Card detail - desktop hover */
+.prest-card .card-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.3s ease;
+  margin-top: 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.prest-card:hover .card-detail {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 10px;
+}
+.prest-card:hover {
+  border-color: var(--accent-l);
+  box-shadow: 0 12px 40px rgba(139,111,78,0.12);
+}
+
+/* Mobile scroll */
+@media(hover: none) and (pointer: coarse) {
+  .prest-card:hover .card-detail {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+  }
+  .prest-card:hover {
+    border-color: var(--border);
+    box-shadow: none;
+    transform: none;
+  }
+  .prest-card.active .card-detail {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 10px;
+  }
+  .prest-card.active {
+    border-color: var(--accent-l);
+    box-shadow: 0 12px 40px rgba(139,111,78,0.12);
+  }
+  .prest-card {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: default;
+  }
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html" class="active">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -258,10 +308,10 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   <div class="reveal"><div class="ey">Mes prestations</div></div>
   <div class="reveal" data-delay="100"><h2>Pour chaque <em>occasion</em></h2></div>
   <div class="prest-grid">
-    <div class="prest-card reveal from-left" data-delay="100"><div class="card-icon">💍</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Mariage</div><p class="card-desc">Cérémonie, vin d'honneur, dîner de réception… Je crée la bande-son de votre plus beau jour avec un répertoire romantique et personnalisé.</p></div>
-    <div class="prest-card reveal from-right" data-delay="150"><div class="card-icon">🥂</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Cocktail &amp; vin d'honneur</div><p class="card-desc">Une musique d'ambiance élégante pour accueillir vos invités et créer une atmosphère raffinée dès leur arrivée.</p></div>
-    <div class="prest-card reveal from-left" data-delay="200"><div class="card-icon">🏢</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Événement d'entreprise</div><p class="card-desc">Séminaires, galas, soirées de fin d'année… Donnez une dimension musicale à vos événements professionnels.</p></div>
-    <div class="prest-card reveal from-right" data-delay="250"><div class="card-icon">🎉</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Soirée privée</div><p class="card-desc">Anniversaires, fêtes de famille, réceptions… Un pianiste live pour transformer votre soirée en moment inoubliable.</p></div>
+    <div class="prest-card reveal from-left" data-delay="100"><div class="card-icon">💍</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Mariage</div><p class="card-desc">Cérémonie, vin d'honneur, dîner de réception… Je crée la bande-son de votre plus beau jour avec un répertoire romantique et personnalisé.</p><div class="card-detail">De la cérémonie jusqu'au dîner, je m'adapte à chaque moment — musique classique pour l'entrée, jazz pour le cocktail, pop ou variété pour la soirée. Répertoire entièrement personnalisé selon vos goûts. Plus de 50 mariages animés en Suisse et en France.</div></div>
+    <div class="prest-card reveal from-right" data-delay="150"><div class="card-icon">🥂</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Cocktail &amp; vin d'honneur</div><p class="card-desc">Une musique d'ambiance élégante pour accueillir vos invités et créer une atmosphère raffinée dès leur arrivée.</p><div class="card-detail">Jazz, musique actuelle et variété française… Je crée l'ambiance parfaite pour vos cocktails et vins d'honneur. Discret et élégant, je m'intègre naturellement à votre événement sans en prendre le dessus.</div></div>
+    <div class="prest-card reveal from-left" data-delay="200"><div class="card-icon">🏢</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Événement d'entreprise</div><p class="card-desc">Séminaires, galas, soirées de fin d'année… Donnez une dimension musicale à vos événements professionnels.</p><div class="card-detail">Une présence musicale live valorise votre image et impressionne vos collaborateurs et clients. Habitué des environnements corporate, je m'adapte au timing et aux contraintes de vos événements d'entreprise.</div></div>
+    <div class="prest-card reveal from-right" data-delay="250"><div class="card-icon">🎉</div><div class="card-title" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:12px">Soirée privée</div><p class="card-desc">Anniversaires, fêtes de famille, réceptions… Un pianiste live pour transformer votre soirée en moment inoubliable.</p><div class="card-detail">Que ce soit pour un anniversaire surprise, une fête de famille ou une réception privée, j'apporte une touche unique et chaleureuse. Je peux aussi apprendre des morceaux spéciaux qui ont de la signification pour vous.</div></div>
   </div>
 </section>
 
@@ -348,4 +398,57 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+
+<script>
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  var pcards = Array.from(document.querySelectorAll('.prest-card'));
+
+  function updatePrestCards() {
+    var screenMid = window.innerHeight / 2;
+    var grid = document.querySelector('.prest-grid');
+    var style = grid ? window.getComputedStyle(grid) : null;
+    var cols = style ? style.gridTemplateColumns.split(' ').filter(function(s){ return s !== '0px'; }).length : 1;
+
+    if (cols >= 2) {
+      var left = pcards.filter(function(_, i){ return i % 2 === 0; });
+      var right = pcards.filter(function(_, i){ return i % 2 !== 0; });
+
+      function bestCard(list) {
+        return list.reduce(function(best, card) {
+          var rect = card.getBoundingClientRect();
+          var mid = rect.top + rect.height / 2;
+          var dist = Math.abs(screenMid - mid);
+          var bestRect = best.getBoundingClientRect();
+          var bestMid = bestRect.top + bestRect.height / 2;
+          var bestDist = Math.abs(screenMid - bestMid);
+          return dist < bestDist ? card : best;
+        });
+      }
+
+      var bestL = bestCard(left);
+      var bestR = right.length ? bestCard(right) : null;
+      pcards.forEach(function(card) {
+        card.classList.toggle('active', card === bestL || card === bestR);
+      });
+    } else {
+      var best = pcards.reduce(function(b, card) {
+        var rect = card.getBoundingClientRect();
+        var mid = rect.top + rect.height / 2;
+        var dist = Math.abs(screenMid - mid);
+        var bRect = b.getBoundingClientRect();
+        var bMid = bRect.top + bRect.height / 2;
+        var bDist = Math.abs(screenMid - bMid);
+        return dist < bDist ? card : b;
+      });
+      pcards.forEach(function(card) {
+        card.classList.toggle('active', card === best);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updatePrestCards, { passive: true });
+  window.addEventListener('resize', updatePrestCards);
+  updatePrestCards();
+}
+</script>
 </body></html>
