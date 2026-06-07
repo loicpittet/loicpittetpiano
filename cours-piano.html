@@ -218,69 +218,65 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 #ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
 #ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-/* Card hover detail */
+
+
+
+
+
+
+
+
+
+
+/* Card detail - desktop hover */
 .card-detail {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
   opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.3s ease;
+  margin-top: 0;
   font-size: 0.78rem;
   color: var(--muted);
   line-height: 1.7;
-  margin-top: 0;
 }
 .card:hover .card-detail {
-  max-height: 200px;
+  max-height: 300px;
   opacity: 1;
   margin-top: 10px;
 }
+.card:hover {
+  border-color: var(--accent-l);
+  box-shadow: 0 12px 40px rgba(139,111,78,0.12);
+}
 
-@media(hover: none) and (pointer: coarse){
-  .card-detail {
-    max-height: 0 !important;
-    overflow: hidden;
-    opacity: 0 !important;
-    transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.3s ease;
+/* Mobile - scroll based */
+@media(hover: none) and (pointer: coarse) {
+  .card:hover .card-detail {
+    max-height: 0;
+    opacity: 0;
     margin-top: 0;
   }
-  .card:hover .card-detail {
-    max-height: 0 !important;
-    opacity: 0 !important;
+  .card:hover {
+    border-color: var(--border);
+    box-shadow: none;
+    transform: none;
   }
-  .card-detail.visible {
-    max-height: 300px !important;
-    opacity: 1 !important;
+  .card.active .card-detail {
+    max-height: 300px;
+    opacity: 1;
     margin-top: 10px;
   }
-}
-
-@media(hover: none) and (pointer: coarse){
-  .card:hover {
-    transform: none !important;
-    box-shadow: none !important;
-    border-color: var(--border) !important;
+  .card.active {
+    border-color: var(--accent-l);
+    box-shadow: 0 12px 40px rgba(139,111,78,0.12);
   }
-}
-
-@media(hover: none) and (pointer: coarse){
-  .card:hover {
-    transform: none !important;
-    box-shadow: none !important;
-    border-color: var(--border) !important;
-  }
-  .card:has(.card-detail.visible) {
-    border-color: var(--accent-l) !important;
-    box-shadow: 0 12px 40px rgba(139,111,78,0.12) !important;
-  }
-  /* Disable text selection on mobile */
   .card {
     -webkit-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    cursor: default;
   }
 }
-
-
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -436,5 +432,66 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+
+
+<script>
+// Only on touch devices
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  var cards = Array.from(document.querySelectorAll('.card'));
+
+  function updateActive() {
+    var screenMid = window.innerHeight / 2;
+    
+    // Get grid columns count
+    var grid = document.querySelector('.grid2');
+    var style = grid ? window.getComputedStyle(grid) : null;
+    var cols = style ? style.gridTemplateColumns.split(' ').filter(function(s){ return s !== '0px'; }).length : 1;
+
+    if (cols >= 2) {
+      // 2 columns: activate one per column
+      var left = cards.filter(function(_, i){ return i % 2 === 0; });
+      var right = cards.filter(function(_, i){ return i % 2 !== 0; });
+      
+      function bestCard(list) {
+        return list.reduce(function(best, card) {
+          var rect = card.getBoundingClientRect();
+          var mid = rect.top + rect.height / 2;
+          var dist = Math.abs(screenMid - mid);
+          var bestRect = best.getBoundingClientRect();
+          var bestMid = bestRect.top + bestRect.height / 2;
+          var bestDist = Math.abs(screenMid - bestMid);
+          return dist < bestDist ? card : best;
+        });
+      }
+      
+      var bestL = bestCard(left);
+      var bestR = right.length ? bestCard(right) : null;
+      
+      cards.forEach(function(card) {
+        card.classList.toggle('active', card === bestL || card === bestR);
+      });
+
+    } else {
+      // 1 column: activate closest to center
+      var best = cards.reduce(function(b, card) {
+        var rect = card.getBoundingClientRect();
+        var mid = rect.top + rect.height / 2;
+        var dist = Math.abs(screenMid - mid);
+        var bRect = b.getBoundingClientRect();
+        var bMid = bRect.top + bRect.height / 2;
+        var bDist = Math.abs(screenMid - bMid);
+        return dist < bDist ? card : b;
+      });
+      cards.forEach(function(card) {
+        card.classList.toggle('active', card === best);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  window.addEventListener('resize', updateActive);
+  updateActive();
+}
+</script>
 
 </body></html>
