@@ -303,10 +303,10 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .vc-scroll{position:relative;display:flex;align-items:center;gap:10px;margin-top:24px}
 .vc-track{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;flex:1;padding:4px 0}
 .vc-track::-webkit-scrollbar{display:none}
-.vc{flex:0 0 200px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white);padding:0}
-.vc-info{padding:10px 14px;border-bottom:1px solid var(--border)}
-.vc-title{font-family:'Playfair Display',serif;font-size:0.82rem;color:var(--text);margin-bottom:2px}
-.vc-artist{font-size:0.68rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase}
+
+
+
+
 .vc-frame{position:relative;padding-bottom:177.77%;height:0;overflow:hidden}
 .vc-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 .vc-btn{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -318,6 +318,13 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   .cp-hero-l{order:1!important}
   .cp-hero-r{order:2!important;min-height:320px}
 }
+
+/* VC CARDS - elegant */
+.vc{flex:0 0 200px;border-radius:16px;overflow:hidden;background:var(--white);box-shadow:0 4px 20px rgba(0,0,0,0.07);transition:transform .3s,box-shadow .3s;border:none;padding:0}
+.vc:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.13)}
+.vc-info{padding:14px 16px 12px;background:linear-gradient(135deg,#1a1a1a 0%,#2d2520 100%)}
+.vc-title{font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:400;color:#fff;margin-bottom:4px;line-height:1.3}
+.vc-artist{font-size:0.68rem;color:rgba(196,168,130,0.9);letter-spacing:0.06em;text-transform:uppercase;line-height:1.4}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -416,7 +423,63 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   <div class="reveal" data-delay="100"><h2>Mon <em>répertoire</em> en vidéo</h2></div>
   <div class="vc-scroll reveal" data-delay="150">
     <button class="vc-btn" onclick="vcScroll(-1)">&#8249;</button>
-    <div class="vc-track" id="vc-track"><div class="vc"><div class="vc-info"><div class="vc-title">Hymne à l'Amour</div><div class="vc-artist">Édith Piaf</div></div><div class="vc-frame"><iframe src="https://www.youtube.com/embed/qjGy5Kbko6M?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vc"><div class="vc-info"><div class="vc-title">Misty</div><div class="vc-artist"></div></div><div class="vc-frame"><iframe src="https://www.youtube.com/embed/GmhhmY5dCEc?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vc"><div class="vc-info"><div class="vc-title">Moonlight Sonata</div><div class="vc-artist"></div></div><div class="vc-frame"><iframe src="https://www.youtube.com/embed/tahtQ-GomMQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vc"><div class="vc-info"><div class="vc-title">Fly Me to the Moon</div><div class="vc-artist"></div></div><div class="vc-frame"><iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vc"><div class="vc-info"><div class="vc-title">The Final Countdown</div><div class="vc-artist"></div></div><div class="vc-frame"><iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vc"><div class="vc-info"><div class="vc-title">Schubert Impromptu Op.90 No.3</div><div class="vc-artist"></div></div><div class="vc-frame"><iframe src="https://www.youtube.com/embed/gAwaGVnsau4?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vc"><div class="vc-info"><div class="vc-title">I Will Survive</div><div class="vc-artist"></div></div><div class="vc-frame"><iframe src="https://www.youtube.com/embed/0g6-By2vpNo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div></div>
+    <div class="vc-track" id="vc-track"><div class="vc">
+      <div class="vc-info">
+        <div class="vc-title">Hymne à l'Amour</div>
+        <div class="vc-artist">Édith Piaf</div>
+      </div>
+      <div class="vc-frame">
+        <iframe src="https://www.youtube.com/embed/qjGy5Kbko6M?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vc">
+      <div class="vc-info">
+        <div class="vc-title">Misty</div>
+        <div class="vc-artist">Erroll Garner</div>
+      </div>
+      <div class="vc-frame">
+        <iframe src="https://www.youtube.com/embed/GmhhmY5dCEc?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vc">
+      <div class="vc-info">
+        <div class="vc-title">Moonlight Sonata</div>
+        <div class="vc-artist">Ludwig van Beethoven · Op.27 No.2</div>
+      </div>
+      <div class="vc-frame">
+        <iframe src="https://www.youtube.com/embed/tahtQ-GomMQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vc">
+      <div class="vc-info">
+        <div class="vc-title">Fly Me to the Moon</div>
+        <div class="vc-artist">Bart Howard</div>
+      </div>
+      <div class="vc-frame">
+        <iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vc">
+      <div class="vc-info">
+        <div class="vc-title">The Final Countdown</div>
+        <div class="vc-artist">Europe</div>
+      </div>
+      <div class="vc-frame">
+        <iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vc">
+      <div class="vc-info">
+        <div class="vc-title">Impromptu Op.90 No.3</div>
+        <div class="vc-artist">Franz Schubert</div>
+      </div>
+      <div class="vc-frame">
+        <iframe src="https://www.youtube.com/embed/gAwaGVnsau4?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vc">
+      <div class="vc-info">
+        <div class="vc-title">I Will Survive</div>
+        <div class="vc-artist">Gloria Gaynor</div>
+      </div>
+      <div class="vc-frame">
+        <iframe src="https://www.youtube.com/embed/0g6-By2vpNo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div></div>
     <button class="vc-btn" onclick="vcScroll(1)">&#8250;</button>
   </div>
 </section>

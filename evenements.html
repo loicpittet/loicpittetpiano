@@ -283,12 +283,12 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 @media(max-width:480px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
 
 .vid-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
-.vid-card{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white);transition:box-shadow .3s,border-color .3s}
+
 .vid-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.08);border-color:var(--accent-l)}
 .vid-header{display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid var(--border)}
 .vid-emoji{font-size:1.6rem;width:44px;height:44px;background:var(--accent-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.vid-title{font-size:0.92rem;font-weight:500;color:var(--text);margin-bottom:3px}
-.vid-artist{font-size:0.78rem;color:var(--muted)}
+
+
 @media(max-width:768px){.vid-grid{grid-template-columns:1fr}}
 
 
@@ -314,11 +314,20 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .vid-scroll{position:relative;display:flex;align-items:center;gap:10px;margin-top:16px}
 .vid-track{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;flex:1;padding:4px 0}
 .vid-track::-webkit-scrollbar{display:none}
-.vid-card{flex:0 0 220px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white)}
+
 .vid-frame{position:relative;padding-bottom:177.77%;height:0;overflow:hidden}
 .vid-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 .vid-prev,.vid-next{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .vid-prev:hover,.vid-next:hover{background:var(--accent);color:white;border-color:var(--accent)}
+
+/* VIDEO CARDS - elegant */
+.vid-card{flex:0 0 200px;border-radius:16px;overflow:hidden;background:var(--white);box-shadow:0 4px 20px rgba(0,0,0,0.07);transition:transform .3s,box-shadow .3s;border:none}
+.vid-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.13)}
+.vid-info{padding:14px 16px 12px;background:linear-gradient(135deg,#1a1a1a 0%,#2d2520 100%)}
+.vid-title{font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:400;color:#fff;margin-bottom:4px;line-height:1.3}
+.vid-artist{font-size:0.68rem;color:rgba(196,168,130,0.9);letter-spacing:0.06em;text-transform:uppercase;line-height:1.4}
+.vid-frame{position:relative;padding-bottom:177.77%;height:0;overflow:hidden}
+.vid-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html" class="active">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -385,7 +394,63 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   <div class="reveal" data-delay="100"><h2>Mon <em>répertoire</em> en vidéo</h2></div>
   <div class="vid-scroll reveal" data-delay="150">
     <button class="vid-prev" onclick="scrollVids('vid-track',-1)">&#8249;</button>
-    <div class="vid-track" id="vid-track"><div class="vid-card"><div class="vid-info"><div class="vid-title">Hymne à l'Amour</div><div class="vid-artist">Édith Piaf</div></div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/qjGy5Kbko6M?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vid-card"><div class="vid-info"><div class="vid-title">Misty</div><div class="vid-artist"></div></div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/GmhhmY5dCEc?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vid-card"><div class="vid-info"><div class="vid-title">Moonlight Sonata</div><div class="vid-artist"></div></div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/tahtQ-GomMQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vid-card"><div class="vid-info"><div class="vid-title">Fly Me to the Moon</div><div class="vid-artist"></div></div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vid-card"><div class="vid-info"><div class="vid-title">The Final Countdown</div><div class="vid-artist"></div></div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vid-card"><div class="vid-info"><div class="vid-title">Schubert Impromptu Op.90 No.3</div><div class="vid-artist"></div></div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/gAwaGVnsau4?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div><div class="vid-card"><div class="vid-info"><div class="vid-title">I Will Survive</div><div class="vid-artist"></div></div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/0g6-By2vpNo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe></div></div></div>
+    <div class="vid-track" id="vid-track"><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Hymne à l'Amour</div>
+        <div class="vid-artist">Édith Piaf</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/qjGy5Kbko6M?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Misty</div>
+        <div class="vid-artist">Erroll Garner</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/GmhhmY5dCEc?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Moonlight Sonata</div>
+        <div class="vid-artist">Ludwig van Beethoven · Op.27 No.2</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/tahtQ-GomMQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Fly Me to the Moon</div>
+        <div class="vid-artist">Bart Howard</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/2AEkLCVb0lQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">The Final Countdown</div>
+        <div class="vid-artist">Europe</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/7kLywQ_LXmQ?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">Impromptu Op.90 No.3</div>
+        <div class="vid-artist">Franz Schubert</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/gAwaGVnsau4?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div><div class="vid-card">
+      <div class="vid-info">
+        <div class="vid-title">I Will Survive</div>
+        <div class="vid-artist">Gloria Gaynor</div>
+      </div>
+      <div class="vid-frame">
+        <iframe src="https://www.youtube.com/embed/0g6-By2vpNo?enablejsapi=1&origin=https://loicpittetpiano.ch" allowfullscreen></iframe>
+      </div>
+    </div></div>
     <button class="vid-next" onclick="scrollVids('vid-track',1)">&#8250;</button>
   </div>
 </section>
