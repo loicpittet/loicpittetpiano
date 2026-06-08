@@ -301,6 +301,26 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   </div>
 </section>
 
+
+<!-- INSTAGRAM -->
+<section class="sec sec-bg" style="text-align:center">
+  <div class="reveal"><div class="ey">Suivez l'aventure</div></div>
+  <div class="reveal" data-delay="100"><h2>Plus de vidéos sur <em>Instagram</em></h2></div>
+  <div class="reveal" data-delay="150">
+    <p style="font-size:0.92rem;color:var(--muted);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto">Découvrez mes prestations, improvisations et coulisses en suivant mon compte Instagram.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:36px">
+      <div style="text-align:center">
+        <div id="insta-count" style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:var(--accent)">—</div>
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Abonnés</div>
+      </div>
+    </div>
+    <a href="https://www.instagram.com/loicpittetpiano" target="_blank" rel="noopener" class="btn btn-dark" style="display:inline-flex;align-items:center;gap:10px">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Suivre @loicpittetpiano
+    </a>
+  </div>
+</section>
+
 <footer>
   <div class="footer-brand">
     <a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a>
@@ -321,6 +341,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
     <ul>
       <li><a href="mailto:loic@loicpittet-piano.ch">loic@loicpittet-piano.ch</a></li>
       <li><a href="#">Genève, Suisse</a></li>
+      <li><a href="https://www.instagram.com/loicpittetpiano" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @loicpittetpiano</a></li>
       <li><a href="#">Lun–Sam · 9h–19h</a></li>
     </ul>
   </div>
@@ -351,5 +372,30 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+
+
+<script>
+// Fetch Instagram follower count via public API
+fetch('https://www.instagram.com/loicpittetpiano/?__a=1&__d=dis')
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    var count = data.graphql && data.graphql.user && data.graphql.user.edge_followed_by && data.graphql.user.edge_followed_by.count;
+    if (count) {
+      var el = document.getElementById('insta-count');
+      if (el) {
+        if (count >= 1000) {
+          el.textContent = (count/1000).toFixed(1).replace('.0','') + 'k';
+        } else {
+          el.textContent = count;
+        }
+      }
+    }
+  })
+  .catch(function(){
+    // Instagram blocks CORS - show static number or hide
+    var el = document.getElementById('insta-count');
+    if (el) el.parentElement.style.display = 'none';
+  });
+</script>
 
 </body></html>
