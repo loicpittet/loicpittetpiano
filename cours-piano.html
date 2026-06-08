@@ -117,7 +117,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .stars{color:var(--accent);font-size:1rem;margin-bottom:12px;letter-spacing:2px}
 .avis-txt{font-size:0.85rem;color:var(--muted);line-height:1.8;font-style:italic;margin-bottom:16px}
 .avis-name{font-size:0.8rem;font-weight:600;color:var(--text)}
-@media(max-width:768px){.cp-hero{grid-template-columns:1fr;min-height:auto}.cp-hero-l{padding:80px 20px 40px}.cp-hero-r{min-height:380px}.cp-hero-r img{object-position:center 20%}.grid2{grid-template-columns:1fr}}
+@media(max-width:768px){.cp-hero{grid-template-columns:1fr;min-height:auto}.cp-hero-l{padding:80px 20px 40px;order:1}.cp-hero-r{min-height:380px;order:2}.cp-hero-r img{object-position:center 20%}.grid2{grid-template-columns:1fr}}
 
 
 
@@ -312,6 +312,12 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .vc-btn{flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--white);border:1px solid var(--border);font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);transition:all .25s;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .vc-btn:hover{background:var(--accent);color:white;border-color:var(--accent)}
 
+
+@media(max-width:900px){
+  .cp-hero{grid-template-columns:1fr!important}
+  .cp-hero-l{order:1!important}
+  .cp-hero-r{order:2!important;min-height:320px}
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -376,9 +382,33 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
     <div class="avis-card avis-hidden" style="display:none"><div class="stars">★★★★★</div><p class="avis-txt">« Mon fils de 10 ans attend ses cours avec impatience chaque semaine. Loïc a su lui transmettre l'amour de la musique de façon naturelle et joyeuse. »</p><div class="avis-name">Nathalie</div></div>
   </div>
 
-  
+  <div style="text-align:center;margin-top:36px" class="reveal" data-delay="300">
+    <button id="btn-more-avis" onclick="showMoreAvis()" style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:100px;border:1.5px solid var(--border);background:var(--white);font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .25s">
+      <span style="width:28px;height:28px;background:var(--accent-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:var(--accent)">+</span>
+      Voir plus d'avis
+    </button>
+  </div>
+
+  <script>
+  function showMoreAvis() {
+    var hidden = document.querySelectorAll('.avis-hidden');
+    var btn = document.getElementById('btn-more-avis');
+    hidden.forEach(function(el, i) {
+      setTimeout(function() {
+        el.style.display = 'block';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        setTimeout(function() {
+          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 50);
+      }, i * 100);
+    });
+    btn.style.display = 'none';
+  }
+  </script>
 </div>
-    <button class="vc-btn" onclick="vcScroll(1)">&#8250;</button>
 </section>
 <!-- VIDEOS COURS -->
 <section class="sec sec-bg">
