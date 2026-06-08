@@ -703,4 +703,35 @@ function vcScroll(dir) {
   }, {passive:true});
 })();
 </script>
+
+<script>
+// YouTube IFrame API - pause others when one plays
+var ytPlayers = {};
+
+window.onYouTubeIframeAPIReady = function() {
+  document.querySelectorAll('iframe[src*="youtube"]').forEach(function(iframe, i) {
+    var id = 'yt-player-' + i;
+    iframe.id = id;
+    ytPlayers[id] = new YT.Player(id, {
+      events: {
+        'onStateChange': function(event) {
+          if (event.data === YT.PlayerState.PLAYING) {
+            Object.keys(ytPlayers).forEach(function(key) {
+              if (key !== id && ytPlayers[key].pauseVideo) {
+                ytPlayers[key].pauseVideo();
+              }
+            });
+          }
+        }
+      }
+    });
+  });
+};
+
+// Load YouTube IFrame API
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+</script>
+
 </body></html>
