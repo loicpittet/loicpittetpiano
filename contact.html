@@ -90,6 +90,14 @@
 #ham-btn.open span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
 #ham-btn.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
 #ham-btn.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+
+/* Force hamburger on touch devices (Samsung Fold open, tablets) */
+@media(hover: none) and (pointer: coarse) {
+  #ham-btn { display: flex !important; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+  #ham-menu { display: flex; }
+}
 </style>
 </head>
 <body>

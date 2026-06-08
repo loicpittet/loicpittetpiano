@@ -336,6 +336,14 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 .vid-artist{font-size:0.68rem;color:rgba(196,168,130,0.9);letter-spacing:0.06em;text-transform:uppercase;line-height:1.4}
 .vid-frame{position:relative;padding-bottom:177.77%;height:0;overflow:hidden}
 .vid-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+
+/* Force hamburger on touch devices (Samsung Fold open, tablets) */
+@media(hover: none) and (pointer: coarse) {
+  #ham-btn { display: flex !important; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+  #ham-menu { display: flex; }
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html" class="active">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>

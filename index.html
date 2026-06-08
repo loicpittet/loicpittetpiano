@@ -308,6 +308,14 @@ textarea.finput{resize:none;height:120px}
   .hero-actions { flex-direction: column; gap: 10px; }
   .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
 }
+
+/* Force hamburger on touch devices (Samsung Fold open, tablets) */
+@media(hover: none) and (pointer: coarse) {
+  #ham-btn { display: flex !important; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+  #ham-menu { display: flex; }
+}
 </style>
 </style>
 
