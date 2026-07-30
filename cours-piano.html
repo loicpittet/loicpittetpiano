@@ -406,6 +406,12 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
 #ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
 #ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 #ham-menu { display: flex; }
+
+@media(hover:none) and (pointer:coarse){
+  #ham-btn{display:flex!important}
+  .nav-links{display:none!important}
+  .nav-cta{display:none!important}
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html" class="active">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
