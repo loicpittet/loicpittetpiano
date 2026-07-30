@@ -46,7 +46,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;font-weight:300;color:var(--text);background:var(--white);overflow-x:hidden}
 
-/* NAV */
+
 nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
 nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
 .logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--text);text-decoration:none;letter-spacing:.01em}
@@ -328,9 +328,9 @@ textarea.finput{resize:none;height:120px}
 }
 
 /* Hamburger X animation */
-#ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-#ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
-#ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+
+
 
 @media(max-width:900px){
   .hero-l { padding: 60px 20px 40px; }
@@ -353,6 +353,24 @@ footer .logo { color: white !important; } footer .logo em { font-style: italic; 
 
 @media(max-width:768px){
   .footer-col ul li a[href*="instagram"]{justify-content:center;display:flex}
+}
+
+/* NAV */
+#ham-btn{display:none;flex-direction:column;gap:6px;cursor:pointer;background:none;border:none;padding:8px;z-index:1000}
+#ham-btn span{display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s}
+#ham-menu{position:fixed;top:68px;left:0;right:0;background:white;border-bottom:1px solid #e4e0d8;z-index:998;padding:0 24px;flex-direction:column;box-shadow:0 8px 24px rgba(0,0,0,.08);max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease}
+#ham-menu a{color:#1a1a1a;text-decoration:none;font-size:1rem;padding:14px 0;border-bottom:1px solid #e4e0d8;display:flex;justify-content:space-between;align-items:center;font-family:'Outfit',sans-serif}
+#ham-menu a:last-child{border-bottom:none}
+#ham-menu .ham-cta{background:#1a1a1a;color:white!important;padding:14px 20px;border-radius:8px;text-align:center;justify-content:center;margin-top:8px;border:none!important}
+#ham-btn.open span:nth-child(1){transform:rotate(45deg) translate(5px,6px)}
+#ham-btn.open span:nth-child(2){opacity:0;transform:translateX(-8px)}
+#ham-btn.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-6px)}
+#ham-menu.open{max-height:500px;padding:16px 24px}
+@media(max-width:900px){
+  #ham-btn{display:flex!important}
+  .nav-links{display:none!important}
+  .nav-cta{display:none!important}
+  #ham-menu{display:flex}
 }
 </style>
 </style>
