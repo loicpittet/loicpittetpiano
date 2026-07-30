@@ -137,7 +137,9 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   nav{padding:0 20px}
   .nav-links{display:none}
   .sec{padding:60px 20px}
-  footer{padding:40px 20px;grid-template-columns:1fr}
+  footer{padding:40px 20px;grid-template-columns:1fr;text-align:center}
+  .footer-brand p{text-align:center;margin:0 auto}
+  .footer-col{text-align:center}
   .footer-bottom{padding:16px 20px;flex-direction:column;gap:8px;text-align:center}
 }
 
@@ -370,6 +372,11 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
   #ham-menu { display: flex; }
+}
+footer .logo { color: white !important; } footer .logo em { font-style: italic; color: var(--accent-l) !important; }
+
+@media(max-width:768px){
+  .footer-col ul li a[href*="instagram"]{justify-content:center;display:flex}
 }
 </style>
 </head>
