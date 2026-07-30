@@ -42,12 +42,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <style>
+  <style>nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav{padding:0 32px}
+nav{padding:0 20px}
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--bg:#f9f7f4;--bg2:#f2efe9;--white:#fff;--text:#1a1a1a;--muted:#6b6b6b;--border:#e4e0d8;--accent:#8b6f4e;--accent-l:#c4a882;--accent-bg:#f5ede3}
     html{scroll-behavior:smooth}
     body{font-family:'Outfit',sans-serif;font-weight:300;color:var(--text);background:var(--white);overflow-x:hidden}
-    nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(255,255,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    
     nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.07)}
     .logo{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--text);text-decoration:none}
     .logo em{color:var(--accent);font-style:italic}
@@ -110,7 +113,7 @@
     .finput::placeholder{color:#bbb}
     textarea.finput{resize:none;height:130px}
     .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    @media(max-width:1024px){nav{padding:0 32px}.contact-wrap{grid-template-columns:1fr}.ct-l{padding:80px 32px 40px}.ct-r{padding:40px 32px}}
+    @media(max-width:1024px){.contact-wrap{grid-template-columns:1fr}.ct-l{padding:80px 32px 40px}.ct-r{padding:40px 32px}}
     
   
 #ham-btn span{display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s}
@@ -133,7 +136,7 @@
 }
 
 @media(max-width:1024px){
-  nav{padding:0 32px}
+  
   .contact-wrap{grid-template-columns:1fr}
   .ct-l{padding:80px 32px 40px;order:2}
   .ct-r{padding:80px 32px 40px;order:1}
@@ -231,13 +234,18 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
 
 <nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html" >Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta active">Contact</a></li></ul>
   
-  <button id="ham-btn" onclick="toggleHam()">
-    <span style="display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s"></span>
-    <span style="display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s"></span>
-    <span style="display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s"></span>
+  <button id="ham-btn" onclick="
+    var m=document.getElementById('ham-menu');
+    var b=document.getElementById('ham-btn');
+    m.classList.toggle('open');
+    b.classList.toggle('open');
+  ">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
 </nav>
-<div id="ham-menu"><a href="index.html" style="color:#8b6f4e">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html">Événements <span>→</span></a><a href="a-propos.html">À propos <span>→</span></a><a href="contact.html" class="ham-cta">Contact</a></div>
+<div id="ham-menu"><a href="index.html">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html">Événements <span>→</span></a><a href="a-propos.html">À propos <span>→</span></a><a href="contact.html" class="ham-cta">Contact</a></div>
 
 <div class="contact-wrap">
   <div class="ct-l">
