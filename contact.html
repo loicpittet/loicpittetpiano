@@ -385,13 +385,18 @@ footer .logo { color: white !important; } footer .logo em { font-style: italic; 
 
 <nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html" >Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta active">Contact</a></li></ul>
   
-  <button id="ham-btn" onclick="toggleHam()">
-    <span style="display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s"></span>
-    <span style="display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s"></span>
-    <span style="display:block;width:24px;height:2px;background:#1a1a1a;border-radius:2px;transition:transform 0.3s,opacity 0.3s"></span>
+  <button id="ham-btn" onclick="
+    var m=document.getElementById('ham-menu');
+    var b=document.getElementById('ham-btn');
+    m.classList.toggle('open');
+    b.classList.toggle('open');
+  ">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
 </nav>
-<div id="ham-menu"><a href="index.html" style="color:#8b6f4e">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html">Événements <span>→</span></a><a href="a-propos.html">À propos <span>→</span></a><a href="contact.html" class="ham-cta">Contact</a></div>
+<div id="ham-menu"><a href="index.html">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html">Événements <span>→</span></a><a href="a-propos.html">À propos <span>→</span></a><a href="contact.html" class="ham-cta">Contact</a></div>
 
 <div class="contact-wrap">
   <div class="ct-l">
