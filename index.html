@@ -133,7 +133,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   footer{padding:48px 32px;grid-template-columns:1fr 1fr}
   .footer-bottom{padding:20px 32px}
 }
-@media(max-width:768px){#ham-btn{display:flex!important}.nav-links{display:none!important}.nav-cta{display:none!important}
+@media(max-width:768px){
   nav{padding:0 20px}
   .nav-links{display:none}
   .sec{padding:60px 20px}
@@ -292,9 +292,12 @@ textarea.finput{resize:none;height:120px}
   background: white;
   border-bottom: 1px solid #e4e0d8;
   z-index: 998;
-  padding: 16px 24px;
+  padding: 0 24px;
   flex-direction: column;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
 }
 #ham-menu a {
   color: #1a1a1a;
@@ -364,12 +367,6 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
   footer .footer-col { text-align: center; }
   footer .footer-col ul li a[href*="instagram"] { justify-content: center; display: flex; }
   .footer-bottom { text-align: center; }
-}
-
-@media(hover:none) and (pointer:coarse){
-  #ham-btn{display:flex!important}
-  .nav-links{display:none!important}
-  .nav-cta{display:none!important}
 }
 </style>
 </style>
