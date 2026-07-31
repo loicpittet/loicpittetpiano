@@ -93,6 +93,13 @@
   .nav-links{display:none!important}
   .nav-cta{display:none!important}
 }
+
+@media(min-width:769px) and (hover:none) and (pointer:coarse){
+  #ham-menu.open{max-height:0!important;padding:0!important;overflow:hidden!important}
+  #ham-btn.open span:nth-child(1){transform:none!important}
+  #ham-btn.open span:nth-child(2){opacity:1!important;transform:none!important}
+  #ham-btn.open span:nth-child(3){transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -254,5 +261,18 @@ async function sendMessage(e) {
 }
 </script>
 
+
+<script>
+window.addEventListener('orientationchange', function() {
+  setTimeout(function() {
+    var btn = document.getElementById('ham-btn');
+    var menu = document.getElementById('ham-menu');
+    if (btn && menu) {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    }
+  }, 100);
+});
+</script>
 </body>
 </html>

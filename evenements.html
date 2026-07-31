@@ -408,6 +408,13 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
   .nav-links{display:none!important}
   .nav-cta{display:none!important}
 }
+
+@media(min-width:769px) and (hover:none) and (pointer:coarse){
+  #ham-menu.open{max-height:0!important;padding:0!important;overflow:hidden!important}
+  #ham-btn.open span:nth-child(1){transform:none!important}
+  #ham-btn.open span:nth-child(2){opacity:1!important;transform:none!important}
+  #ham-btn.open span:nth-child(3){transform:none!important}
+}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html" class="active">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -1058,5 +1065,18 @@ window.onYouTubeIframeAPIReady = function() {
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
+</script>
+
+<script>
+window.addEventListener('orientationchange', function() {
+  setTimeout(function() {
+    var btn = document.getElementById('ham-btn');
+    var menu = document.getElementById('ham-menu');
+    if (btn && menu) {
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    }
+  }, 100);
+});
 </script>
 </body></html>
