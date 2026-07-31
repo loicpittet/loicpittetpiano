@@ -133,7 +133,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   footer{padding:48px 32px;grid-template-columns:1fr 1fr}
   .footer-bottom{padding:20px 32px}
 }
-@media(max-width:768px){#ham-btn{display:flex!important}.nav-links{display:none!important}.nav-cta{display:none!important}
+@media(max-width:768px){
   nav{padding:0 20px}
   .nav-links{display:none}
   .sec{padding:60px 20px}
@@ -188,25 +188,72 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 
 
 /* ═══ HAMBURGER MENU ═══ */
-
-
-
-
-
-
-
+#ham-btn {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  z-index: 1000;
+}
+#ham-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #1a1a1a;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+#ham-menu {
+  display: none;
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid #e4e0d8;
+  z-index: 998;
+  padding: 16px 24px;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+#ham-menu a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 14px 0;
+  border-bottom: 1px solid #e4e0d8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+}
+#ham-menu a:last-child { border-bottom: none; }
+#ham-menu a:hover { color: #8b6f4e; }
+#ham-menu .ham-cta {
+  background: #1a1a1a;
+  color: white !important;
+  padding: 14px 20px;
+  border-radius: 8px;
+  text-align: center;
+  justify-content: center;
+  margin-top: 8px;
+  border: none !important;
+}
 @media (max-width: 900px) {
-  
-  
-  
+  #ham-btn { display: flex !important; }
+  #ham-menu { display: flex; max-height: 0; overflow: hidden; padding: 0 24px; transition: max-height 0.4s ease, padding 0.3s ease; }
+  #ham-menu.open { max-height: 500px; padding: 16px 24px; }
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
 }
 
 /* Hamburger X animation */
-
-
-
+#ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+#ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
+#ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
 /* Card detail - desktop hover */
 .prest-card .card-detail {
@@ -321,10 +368,10 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 
 /* Force hamburger on touch devices (Samsung Fold open, tablets) */
 @media(hover: none) and (pointer: coarse) {
-  
+  #ham-btn { display: flex !important; }
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
-  
+  #ham-menu { display: flex; }
 }
 footer .logo { color: white !important; } footer .logo em { font-style: italic; color: var(--accent-l) !important; }
 
@@ -342,79 +389,6 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
   footer .footer-col ul li a[href*="instagram"] { justify-content: center; display: flex; }
   .footer-bottom { text-align: center; }
 }
-#ham-btn {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 8px;
-  z-index: 1000;
-}
-#ham-btn span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #1a1a1a;
-  border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-#ham-menu {
-  display: none;
-  position: fixed;
-  top: 68px;
-  left: 0;
-  right: 0;
-  background: white;
-  border-bottom: 1px solid #e4e0d8;
-  z-index: 998;
-  padding: 16px 24px;
-  flex-direction: column;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-#ham-menu a {
-  color: #1a1a1a;
-  text-decoration: none;
-  font-size: 1rem;
-  padding: 14px 0;
-  border-bottom: 1px solid #e4e0d8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Outfit', sans-serif;
-}
-#ham-menu a:last-child { border-bottom: none; }
-#ham-menu a:hover { color: #8b6f4e; }
-#ham-menu .ham-cta {
-  background: #1a1a1a;
-  color: white !important;
-  padding: 14px 20px;
-  border-radius: 8px;
-  text-align: center;
-  justify-content: center;
-  margin-top: 8px;
-  border: none !important;
-}
-#ham-menu { display: flex; max-height: 0; overflow: hidden; padding: 0 24px; transition: max-height 0.4s ease, padding 0.3s ease; }
-#ham-menu.open { max-height: 500px; padding: 16px 24px; }
-#ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
-#ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
-#ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-#ham-menu { display: flex; }
-
-@media(hover:none) and (pointer:coarse){
-  #ham-btn{display:flex!important}
-  .nav-links{display:none!important}
-  .nav-cta{display:none!important}
-}
-
-@media(min-width:769px) and (hover:none) and (pointer:coarse){
-  #ham-menu.open{max-height:0!important;padding:0!important;overflow:hidden!important}
-  #ham-btn.open span:nth-child(1){transform:none!important}
-  #ham-btn.open span:nth-child(2){opacity:1!important;transform:none!important}
-  #ham-btn.open span:nth-child(3){transform:none!important}
-}
 </style>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html" class="active">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
@@ -430,7 +404,7 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
     <span></span>
   </button>
 </nav>
-<div id="ham-menu"><a href="index.html">Accueil </a><a href="cours-piano.html">Cours de piano </a><a href="evenements.html">Événements </a><a href="a-propos.html">À propos </a><a href="contact.html" class="ham-cta">Contact</a></div>
+<div id="ham-menu"><a href="index.html">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html" style="color:#8b6f4e">Événements <span>→</span></a><a href="a-propos.html">À propos <span>→</span></a><a href="contact.html" class="ham-cta">Contact</a></div>
 
 
 <div class="ev-hero">
@@ -1066,17 +1040,21 @@ var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 document.head.appendChild(tag);
 </script>
-
 <script>
+function closeHamMenu() {
+  var btn = document.getElementById('ham-btn');
+  var menu = document.getElementById('ham-menu');
+  if (btn && menu) {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+  }
+}
+document.addEventListener('DOMContentLoaded', closeHamMenu);
 window.addEventListener('orientationchange', function() {
-  setTimeout(function() {
-    var btn = document.getElementById('ham-btn');
-    var menu = document.getElementById('ham-menu');
-    if (btn && menu) {
-      btn.classList.remove('open');
-      menu.classList.remove('open');
-    }
-  }, 100);
+  setTimeout(closeHamMenu, 150);
+});
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 900) closeHamMenu();
 });
 </script>
 </body></html>

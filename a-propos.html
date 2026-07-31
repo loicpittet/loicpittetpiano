@@ -133,7 +133,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   footer{padding:48px 32px;grid-template-columns:1fr 1fr}
   .footer-bottom{padding:20px 32px}
 }
-@media(max-width:768px){#ham-btn{display:flex!important}.nav-links{display:none!important}.nav-cta{display:none!important}
+@media(max-width:768px){
   nav{padding:0 20px}
   .nav-links{display:none}
   .sec{padding:60px 20px}
@@ -190,55 +190,6 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
 
 
 /* ═══ HAMBURGER MENU ═══ */
-
-
-
-
-
-
-
-@media (max-width: 900px) {
-  
-  
-  
-  .nav-links { display: none !important; }
-  .nav-cta { display: none !important; }
-}
-
-/* Hamburger X animation */
-
-
-
-
-@media(max-width:900px){
-  .ap-hero{grid-template-columns:1fr!important}
-  .ap-hero-l{order:1!important}
-  .ap-hero-r{order:2!important;min-height:320px}
-}
-
-/* Force hamburger on touch devices (Samsung Fold open, tablets) */
-@media(hover: none) and (pointer: coarse) {
-  
-  .nav-links { display: none !important; }
-  .nav-cta { display: none !important; }
-  
-}
-footer .logo { color: white !important; } footer .logo em { font-style: italic; color: var(--accent-l) !important; }
-
-@media(max-width:768px){
-  .footer-col ul li a[href*="instagram"]{justify-content:center;display:flex}
-}
-
-/* FOOTER FIXES */
-footer .footer-brand .logo { color: white !important; }
-footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: italic; }
-@media(max-width:768px){
-  footer { text-align: center !important; }
-  footer .footer-brand p { text-align: center; margin: 0 auto; }
-  footer .footer-col { text-align: center; }
-  footer .footer-col ul li a[href*="instagram"] { justify-content: center; display: flex; }
-  .footer-bottom { text-align: center; }
-}
 #ham-btn {
   display: none;
   flex-direction: column;
@@ -293,24 +244,47 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
   margin-top: 8px;
   border: none !important;
 }
-#ham-menu { display: flex; max-height: 0; overflow: hidden; padding: 0 24px; transition: max-height 0.4s ease, padding 0.3s ease; }
-#ham-menu.open { max-height: 500px; padding: 16px 24px; }
+@media (max-width: 900px) {
+  #ham-btn { display: flex !important; }
+  #ham-menu { display: flex; max-height: 0; overflow: hidden; padding: 0 24px; transition: max-height 0.4s ease, padding 0.3s ease; }
+  #ham-menu.open { max-height: 500px; padding: 16px 24px; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+}
+
+/* Hamburger X animation */
 #ham-btn.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
 #ham-btn.open span:nth-child(2) { opacity: 0; transform: translateX(-8px); }
 #ham-btn.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
-#ham-menu { display: flex; }
 
-@media(hover:none) and (pointer:coarse){
-  #ham-btn{display:flex!important}
-  .nav-links{display:none!important}
-  .nav-cta{display:none!important}
+@media(max-width:900px){
+  .ap-hero{grid-template-columns:1fr!important}
+  .ap-hero-l{order:1!important}
+  .ap-hero-r{order:2!important;min-height:320px}
 }
 
-@media(min-width:769px) and (hover:none) and (pointer:coarse){
-  #ham-menu.open{max-height:0!important;padding:0!important;overflow:hidden!important}
-  #ham-btn.open span:nth-child(1){transform:none!important}
-  #ham-btn.open span:nth-child(2){opacity:1!important;transform:none!important}
-  #ham-btn.open span:nth-child(3){transform:none!important}
+/* Force hamburger on touch devices (Samsung Fold open, tablets) */
+@media(hover: none) and (pointer: coarse) {
+  #ham-btn { display: flex !important; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+  #ham-menu { display: flex; }
+}
+footer .logo { color: white !important; } footer .logo em { font-style: italic; color: var(--accent-l) !important; }
+
+@media(max-width:768px){
+  .footer-col ul li a[href*="instagram"]{justify-content:center;display:flex}
+}
+
+/* FOOTER FIXES */
+footer .footer-brand .logo { color: white !important; }
+footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: italic; }
+@media(max-width:768px){
+  footer { text-align: center !important; }
+  footer .footer-brand p { text-align: center; margin: 0 auto; }
+  footer .footer-col { text-align: center; }
+  footer .footer-col ul li a[href*="instagram"] { justify-content: center; display: flex; }
+  .footer-bottom { text-align: center; }
 }
 </style>
 </head>
@@ -327,7 +301,7 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
     <span></span>
   </button>
 </nav>
-<div id="ham-menu"><a href="index.html">Accueil </a><a href="cours-piano.html">Cours de piano </a><a href="evenements.html">Événements </a><a href="a-propos.html">À propos </a><a href="contact.html" class="ham-cta">Contact</a></div>
+<div id="ham-menu"><a href="index.html">Accueil <span>→</span></a><a href="cours-piano.html">Cours de piano <span>→</span></a><a href="evenements.html">Événements <span>→</span></a><a href="a-propos.html" style="color:#8b6f4e">À propos <span>→</span></a><a href="contact.html" class="ham-cta">Contact</a></div>
 
 
 <div class="ap-hero">
@@ -492,17 +466,21 @@ fetch('https://www.instagram.com/loicpittetpiano/?__a=1&__d=dis')
   });
 </script>
 
-
 <script>
+function closeHamMenu() {
+  var btn = document.getElementById('ham-btn');
+  var menu = document.getElementById('ham-menu');
+  if (btn && menu) {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+  }
+}
+document.addEventListener('DOMContentLoaded', closeHamMenu);
 window.addEventListener('orientationchange', function() {
-  setTimeout(function() {
-    var btn = document.getElementById('ham-btn');
-    var menu = document.getElementById('ham-menu');
-    if (btn && menu) {
-      btn.classList.remove('open');
-      menu.classList.remove('open');
-    }
-  }, 100);
+  setTimeout(closeHamMenu, 150);
+});
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 900) closeHamMenu();
 });
 </script>
 </body></html>
