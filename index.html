@@ -405,26 +405,6 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
 }
 
 </script>
-<script>
-(function(){
-  window.addEventListener('load', function(){
-    var menu = document.getElementById('ham-menu');
-    var btn = document.getElementById('ham-btn');
-    if(menu && btn){
-      menu.classList.remove('open');
-      btn.classList.remove('open');
-    }
-  });
-  window.addEventListener('resize', function(){
-    var menu = document.getElementById('ham-menu');
-    var btn = document.getElementById('ham-btn');
-    if(menu && btn && menu.classList.contains('open')){
-      menu.classList.remove('open');
-      btn.classList.remove('open');
-    }
-  });
-})();
-</script>
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html" class="active">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
   
@@ -439,7 +419,7 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
     <span></span>
   </button>
 </nav>
-<div id="ham-menu"><a href="index.html" style="color:#8b6f4e">Accueil </a><a href="cours-piano.html">Cours de piano </a><a href="evenements.html">Événements </a><a href="a-propos.html">À propos </a><a href="contact.html" class="ham-cta">Contact</a></div>
+<div id="ham-menu"><script>document.getElementById("ham-menu").classList.remove("open");document.getElementById("ham-btn") && document.getElementById("ham-btn").classList.remove("open");</script><a href="index.html" style="color:#8b6f4e">Accueil </a><a href="cours-piano.html">Cours de piano </a><a href="evenements.html">Événements </a><a href="a-propos.html">À propos </a><a href="contact.html" class="ham-cta">Contact</a></div>
 
 
 <!-- HERO -->
