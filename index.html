@@ -419,7 +419,7 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
     <span></span>
   </button>
 </nav>
-<div id="ham-menu"><script>document.getElementById("ham-menu").classList.remove("open");document.getElementById("ham-btn") && document.getElementById("ham-btn").classList.remove("open");</script><a href="index.html" style="color:#8b6f4e">Accueil </a><a href="cours-piano.html">Cours de piano </a><a href="evenements.html">Événements </a><a href="a-propos.html">À propos </a><a href="contact.html" class="ham-cta">Contact</a></div>
+<div id="ham-menu"><a href="index.html" style="color:#8b6f4e">Accueil </a><a href="cours-piano.html">Cours de piano </a><a href="evenements.html">Événements </a><a href="a-propos.html">À propos </a><a href="contact.html" class="ham-cta">Contact</a></div>
 
 
 <!-- HERO -->
@@ -581,5 +581,15 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
+<script>
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 900) {
+    var menu = document.getElementById('ham-menu');
+    var btn = document.getElementById('ham-btn');
+    if (menu) menu.classList.remove('open');
+    if (btn) btn.classList.remove('open');
+  }
+});
+</script>
 </body>
 </html>
