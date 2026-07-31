@@ -133,7 +133,7 @@ footer{background:#111;color:var(--white);padding:56px;display:grid;grid-templat
   footer{padding:48px 32px;grid-template-columns:1fr 1fr}
   .footer-bottom{padding:20px 32px}
 }
-@media(max-width:768px){
+@media(max-width:768px){#ham-btn{display:flex!important}.nav-links{display:none!important}.nav-cta{display:none!important}
   nav{padding:0 20px}
   .nav-links{display:none}
   .sec{padding:60px 20px}
@@ -365,6 +365,12 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
   footer .footer-col ul li a[href*="instagram"] { justify-content: center; display: flex; }
   .footer-bottom { text-align: center; }
 }
+
+@media(hover:none) and (pointer:coarse){
+  #ham-btn{display:flex!important}
+  .nav-links{display:none!important}
+  .nav-cta{display:none!important}
+}
 </style>
 </style>
 
@@ -581,15 +587,5 @@ reveals.forEach(el => revealObserver.observe(el));
 
 
 
-<script>
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 900) {
-    var menu = document.getElementById('ham-menu');
-    var btn = document.getElementById('ham-btn');
-    if (menu) menu.classList.remove('open');
-    if (btn) btn.classList.remove('open');
-  }
-});
-</script>
 </body>
 </html>
