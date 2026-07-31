@@ -299,6 +299,7 @@ textarea.finput{resize:none;height:120px}
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.3s ease;
 }
+#ham-menu.open { max-height: 500px; padding: 16px 24px; }
 #ham-menu a {
   color: #1a1a1a;
   text-decoration: none;
@@ -325,7 +326,6 @@ textarea.finput{resize:none;height:120px}
 @media (max-width: 900px) {
   #ham-btn { display: flex !important; }
   #ham-menu { display: flex; max-height: 0; overflow: hidden; padding: 0 24px; transition: max-height 0.4s ease, padding 0.3s ease; }
-  #ham-menu.open { max-height: 500px; padding: 16px 24px; }
   .nav-links { display: none !important; }
   .nav-cta { display: none !important; }
 }
