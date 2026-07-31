@@ -415,7 +415,12 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
 </head>
 <body><nav><a href="index.html" class="logo">Loïc Pittet <em>Piano</em></a><ul class="nav-links"><li><a href="index.html" class="active">Accueil</a></li><li><a href="cours-piano.html">Cours de piano</a></li><li><a href="evenements.html">Événements</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="contact.html" class="nav-cta">Contact</a></li></ul>
   
-  <button id="ham-btn" onclick="toggleHam()">
+  <button id="ham-btn" onclick="
+    var m=document.getElementById('ham-menu');
+    var b=document.getElementById('ham-btn');
+    m.classList.toggle('open');
+    b.classList.toggle('open');
+  ">
     <span></span>
     <span></span>
     <span></span>
@@ -596,19 +601,6 @@ window.addEventListener('orientationchange', function() {
   }, 100);
 });
 </script>
-<script>
-function toggleHam() {
-  var btn = document.getElementById('ham-btn');
-  var menu = document.getElementById('ham-menu');
-  btn.classList.toggle('open');
-  menu.classList.toggle('open');
-}
-document.querySelectorAll('#ham-menu a').forEach(function(a){
-  a.addEventListener('click', function(){
-    document.getElementById('ham-btn').classList.remove('open');
-    document.getElementById('ham-menu').classList.remove('open');
-  });
-});
-</script>
+
 </body>
 </html>
