@@ -387,6 +387,10 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
 }
 </style>
 <style id="classy-v1">
+/* Anti-défilement horizontal sur mobile : les cartes "from-right" encore cachées dépassaient de 20px à droite */
+html,body{overflow-x:hidden;max-width:100%}
+.sec,.hero,.cp-hero,.ev-hero,.ap-hero,.contact-wrap{overflow-x:clip}
+
 /* ═══ CLASSY V1 (accueil) ═══ */
 /* Hero sombre : texte crème à gauche, vidéo à droite, une seule scène */
 .hero-l{background:#0f0f0f}

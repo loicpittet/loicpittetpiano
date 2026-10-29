@@ -415,6 +415,10 @@ footer .footer-brand .logo em { color: var(--accent-l) !important; font-style: i
 }
 </style>
 <style id="classy-v1">
+/* Anti-défilement horizontal sur mobile : les cartes "from-right" encore cachées dépassaient de 20px à droite */
+html,body{overflow-x:hidden;max-width:100%}
+.sec,.hero,.cp-hero,.ev-hero,.ap-hero,.contact-wrap{overflow-x:clip}
+
 /* ═══ CLASSY V1 : boutons, filets, coins, icônes ═══ */
 .btn{border-radius:2px;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:500;padding:14px 30px}
 .btn-dark:hover,.btn-gold:hover{box-shadow:0 8px 24px rgba(139,111,78,.22)}
